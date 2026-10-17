@@ -794,7 +794,7 @@ if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:
  const clipModal=document.getElementById('clipModal'),clipTitle=document.getElementById('clipTitle');
  document.querySelectorAll('.clipBtn').forEach(b=>b.addEventListener('click',()=>{
   const url=b.dataset.url;
-  if(url && /^https?:\\/\\//i.test(url)){window.open(url,'_blank','noopener,noreferrer');return;}
+  if(url && /^https?:\/\//i.test(url)){window.open(url,'_blank','noopener,noreferrer');return;}
   if(clipTitle)clipTitle.textContent=b.dataset.clip||'Add your clip';
   if(clipModal)clipModal.hidden=false;
  }));
@@ -807,4 +807,4 @@ if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:
 
 </script>
 </body>
-  </html>
+                                  </html>
