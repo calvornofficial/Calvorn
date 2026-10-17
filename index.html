@@ -6,264 +6,612 @@
     <title>CALVORNFEARLESS - Calvorn's World</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================
+           1. CORE RESET & BASE STYLES
+           ========================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
-        body {
-            background-color: #050306;
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #030204;
             color: #ffffff;
             font-family: 'Rajdhani', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
         }
 
-        .container {
+        /* ==========================================
+           2. BACKGROUND & AMBIENT EFFECTS
+           ========================================== */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #12031a 0%, #050208 60%, #020104 100%);
+            z-index: 1;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(180, 0, 0, 0.22) 0%, rgba(139, 0, 0, 0.08) 45%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            pointer-events: none;
+            animation: ambientPulse 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes ambientPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.85);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.85;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0.95);
+                opacity: 0.6;
+            }
+        }
+
+        /* Scanline Overlay Effect */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 420px;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 3px, 6px 100%;
+            opacity: 0.6;
+        }
+
+        /* Particle Canvas Layer */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           3. MAIN CONTAINER SCALL
+           ========================================== */
+        .app-container {
+            width: 100%;
+            max-width: 440px;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px;
             position: relative;
+            z-index: 10;
         }
 
-        /* --- LOADER SCREEN --- */
+        /* ==========================================
+           4. SCREEN 1: LOADER UI STYLES
+           ========================================== */
         .loader-screen {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: opacity 0.5s ease;
-        }
-
-        .avatar-box {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin-bottom: 35px;
-            display: flex;
             justify-content: center;
-            align-items: center;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
+            opacity: 1;
+            transform: scale(1);
         }
 
-        .avatar-box::before {
-            content: '';
-            position: absolute;
-            width: 210px;
-            height: 210px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(230,0,0,0.6) 0%, rgba(0,0,0,0) 70%);
-            z-index: 1;
-        }
-
-        .avatar-img {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            border: 4px solid #8b0000;
-            object-fit: cover;
-            z-index: 2;
+        .avatar-container {
             position: relative;
-        }
-
-        .title {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        }
-
-        .subtitle {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 11px;
-            color: #ff3333;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .progress-container {
-            width: 85%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 0 10px rgba(230, 0, 0, 0.3);
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #ff1a1a, #ff6666);
-            border-radius: 10px;
-            box-shadow: 0 0 8px #ff1a1a;
-        }
-
-        .progress-text {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 14px;
-            color: #ff3333;
-            margin-top: 15px;
-        }
-
-        /* --- PORTAL MAIN SCREEN --- */
-        .main-content {
-            display: none;
-            width: 100%;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .portal-title {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 15px;
-            color: #d1d1d1;
-            letter-spacing: 2px;
+            width: 190px;
+            height: 190px;
             margin-bottom: 30px;
-        }
-
-        .portal-frame {
-            width: 220px;
-            height: 280px;
-            margin: 0 auto 30px auto;
-            border: 12px solid #2d2438;
-            background-color: #0f051d;
-            box-shadow: inset 0 0 20px #9d00ff, 0 0 15px rgba(157, 0, 255, 0.4);
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
-        .portal-swirl {
-            width: 180%;
-            height: 180%;
-            background: radial-gradient(circle, #d946ef 0%, #7e22ce 40%, transparent 70%);
-            animation: spin 6s linear infinite;
-            filter: blur(8px);
+        .avatar-aura {
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.55) 0%, rgba(139, 0, 0, 0.2) 50%, transparent 75%);
+            z-index: 1;
+            animation: auraGlow 2.5s infinite alternate ease-in-out;
         }
 
-        @keyframes spin {
+        @keyframes auraGlow {
+            0% {
+                transform: scale(0.92);
+                opacity: 0.6;
+                filter: blur(4px);
+            }
+            100% {
+                transform: scale(1.12);
+                opacity: 0.95;
+                filter: blur(8px);
+            }
+        }
+
+        .avatar-border-ring {
+            position: absolute;
+            width: 184px;
+            height: 184px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 51, 51, 0.6);
+            z-index: 2;
+            animation: rotateRing 12s linear infinite;
+        }
+
+        @keyframes rotateRing {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        .world-text {
+        .avatar-image {
+            width: 172px;
+            height: 172px;
+            border-radius: 50%;
+            border: 4px solid #8b0000;
+            object-fit: cover;
+            z-index: 3;
+            position: relative;
+            box-shadow: 0 0 30px rgba(230, 0, 0, 0.5), inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .brand-title {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.6), 0 0 30px rgba(139, 0, 0, 0.4);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .brand-roles {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #ff3333;
+            letter-spacing: 1px;
+            margin-bottom: 42px;
+            text-align: center;
+            line-height: 1.6;
+            text-shadow: 0 0 8px rgba(255, 51, 51, 0.7);
+        }
+
+        /* Progress Bar Track */
+        .progress-track {
+            width: 88%;
+            height: 8px;
+            background: rgba(15, 5, 10, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9), 0 0 12px rgba(230, 0, 0, 0.35);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #990000 0%, #ff1a1a 70%, #ff6666 100%);
+            border-radius: 12px;
+            box-shadow: 0 0 14px #ff1a1a, 0 0 25px rgba(255, 26, 26, 0.8);
+            transition: width 0.02s linear;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 15px;
+            background: #ffffff;
+            box-shadow: 0 0 10px #ffffff;
+            opacity: 0.8;
+            filter: blur(2px);
+        }
+
+        .progress-counter {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: #ff3333;
+            margin-top: 18px;
+            text-shadow: 0 0 10px rgba(255, 51, 51, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           5. SCREEN 2: PORTAL WORLD UI STYLES
+           ========================================== */
+        .portal-screen {
+            display: none;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s ease;
+        }
+
+        .portal-brand-heading {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 15px;
+            color: #e2e2e2;
+            letter-spacing: 2px;
+            margin-bottom: 28px;
+            text-shadow: 0 0 12px rgba(162, 0, 255, 0.6), 0 0 24px rgba(126, 34, 206, 0.4);
+            text-transform: uppercase;
+        }
+
+        /* Minecraft Nether Portal Pixel Frame */
+        .nether-portal-wrapper {
+            width: 220px;
+            height: 280px;
+            margin: 0 auto 30px auto;
+            border: 12px solid #23182d;
+            background-color: #0b0214;
+            box-shadow: 
+                inset 0 0 25px #a200ff, 
+                0 0 25px rgba(162, 0, 255, 0.5),
+                0 0 50px rgba(126, 34, 206, 0.3);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        /* Base64 Pixel Texture Pattern Simulation */
+        .nether-portal-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border: 4px solid #140d1a;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .portal-vortex {
+            width: 240%;
+            height: 240%;
+            background: radial-gradient(circle, #f0abfc 0%, #d946ef 25%, #7e22ce 55%, transparent 75%);
+            animation: vortexSpin 5.5s linear infinite;
+            filter: blur(12px);
+            position: absolute;
+        }
+
+        @keyframes vortexSpin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.12);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .portal-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background-image: radial-gradient(rgba(233, 213, 255, 0.8) 1px, transparent 0);
+            background-size: 16px 16px;
+            animation: particleFloat 4s ease-in-out infinite alternate;
+            opacity: 0.5;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) scale(1); opacity: 0.3; }
+            100% { transform: translateY(-10px) scale(1.1); opacity: 0.7; }
+        }
+
+        .world-heading {
             font-family: 'Press Start 2P', monospace;
             font-size: 14px;
             color: #ffffff;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        .enter-btn {
+        .portal-enter-btn {
             width: 100%;
-            padding: 16px;
-            background: rgba(45, 20, 60, 0.6);
+            padding: 18px 20px;
+            background: rgba(35, 12, 50, 0.85);
             border: 2px solid #a855f7;
-            color: #e9d5ff;
-            font-family: monospace;
-            font-size: 13px;
+            color: #f3e8ff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            line-height: 1.5;
             cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+            outline: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .enter-btn:hover {
+        .portal-enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .portal-enter-btn:hover::before {
+            left: 100%;
+        }
+
+        .portal-enter-btn:hover {
             background: #a855f7;
             color: #ffffff;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.85);
+            transform: translateY(-2px);
         }
 
-        .footer-text {
+        .portal-enter-btn:active {
+            transform: translateY(1px);
+        }
+
+        .footer-tagline {
             font-size: 12px;
             color: #888888;
-            margin-top: 15px;
+            margin-top: 20px;
             font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           6. RESPONSIVE MEDIA QUERIES
+           ========================================== */
+        @media (max-width: 380px) {
+            .avatar-container {
+                width: 150px;
+                height: 150px;
+            }
+            .avatar-image {
+                width: 135px;
+                height: 135px;
+            }
+            .avatar-aura {
+                width: 180px;
+                height: 180px;
+            }
+            .brand-title {
+                font-size: 24px;
+            }
+            .nether-portal-wrapper {
+                width: 180px;
+                height: 230px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Loader Screen (Exactly 2 Seconds) -->
-        <div class="loader-screen" id="loader">
-            <div class="avatar-box">
-                <!-- High-quality PvP Anime Avatar -->
-                <img src="https://i.pinimg.com/564x/02/76/8a/02768a41768832a8ee68f2378fef1db4.jpg" alt="PvP Avatar" class="avatar-img">
-            </div>
-            <h1 class="title">CALVORNFEARLESS</h1>
-            <p class="subtitle">DEVELOPER • PVPER • CODER</p>
-            
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-            <div class="progress-text" id="progressText">0%</div>
-        </div>
+    <!-- Background Layer Elements -->
+    <div class="bg-overlay"></div>
+    <div class="ambient-glow"></div>
+    <div class="scanlines"></div>
+    <canvas id="particleCanvas"></canvas>
 
-        <!-- Portal Screen -->
-        <div class="main-content" id="mainContent">
-            <h2 class="portal-title">CALVORNFEARLESS</h2>
-            
-            <div class="portal-frame">
-                <div class="portal-swirl"></div>
+    <!-- App Container -->
+    <div class="app-container">
+        
+        <!-- ==========================================
+             1ST SCREEN: LOADER (EXACT 2 SECONDS)
+             ========================================== -->
+        <div class="loader-screen" id="loaderScreen">
+            <div class="avatar-container">
+                <div class="avatar-aura"></div>
+                <div class="avatar-border-ring"></div>
+                <img src="https://i.pinimg.com/564x/02/76/8a/02768a41768832a8ee68f2378fef1db4.jpg" alt="CALVORNFEARLESS Avatar" class="avatar-image">
             </div>
 
-            <h3 class="world-text">Calvorn's world</h3>
-            
-            <button class="enter-btn">▶ Click to enter Calvorn's world</button>
-            <p class="footer-text">Your next adventure starts here</p>
+            <h1 class="brand-title">CALVORNFEARLESS</h1>
+            <p class="brand-roles">DEVELOPER • PVPER • CODER</p>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-counter" id="progressCounter">0%</div>
         </div>
+
+        <!-- ==========================================
+             2ND SCREEN: PORTAL WORLD MAIN PAGE
+             ========================================== -->
+        <div class="portal-screen" id="portalScreen">
+            <h2 class="portal-brand-heading">CALVORNFEARLESS</h2>
+
+            <div class="nether-portal-wrapper">
+                <div class="portal-vortex"></div>
+                <div class="portal-particles"></div>
+            </div>
+
+            <h3 class="world-heading">Calvorn's world</h3>
+
+            <button class="portal-enter-btn" id="enterPortalBtn">▶ Click to enter Calvorn's world</button>
+            <p class="footer-tagline">Your next adventure starts here</p>
+        </div>
+
     </div>
 
+    <!-- Audio Player Element -->
+    <audio id="backgroundAudio" loop preload="auto">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        // Exact 2 Seconds Timer Logic
-        let progress = 0;
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
-        const loader = document.getElementById('loader');
-        const mainContent = document.getElementById('mainContent');
+        /* ==========================================
+           PARTICLE BACKGROUND ENGINE
+           ========================================== */
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
 
-        const totalDuration = 2000; // Exact 2000ms (2 seconds)
-        const intervalTime = 20;    // Step every 20ms
-        const increment = 100 / (totalDuration / intervalTime);
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
 
-        const timer = setInterval(() => {
-            progress += increment;
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
 
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(timer);
-
-                // Smooth Auto Switch
-                setTimeout(() => {
-                    loader.style.opacity = '0';
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        mainContent.style.display = 'block';
-                        setTimeout(() => {
-                            mainContent.style.opacity = '1';
-                        }, 50);
-                    }, 500);
-                }, 150);
+        class Particle {
+            constructor() {
+                this.reset();
             }
 
-            progressBar.style.width = progress + '%';
-            progressText.innerText = Math.floor(progress) + '%';
-        }, intervalTime);
+            reset() {
+                this.x = Math.random() * width;
+                this.y = height + Math.random() * 20;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = -(Math.random() * 1.5 + 0.5);
+                this.size = Math.random() * 2 + 1;
+                this.alpha = Math.random() * 0.6 + 0.2;
+                this.color = Math.random() > 0.5 ? '#ff1a1a' : '#a200ff';
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= 0.002;
+
+                if (this.y < -10 || this.alpha <= 0) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        const particles = Array.from({ length: 45 }, () => new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        /* ==========================================
+           EXACT 2-SECOND TIMER & TRANSITION SYSTEM
+           ========================================== */
+        let currentProgress = 0;
+        const progressFill = document.getElementById('progressFill');
+        const progressCounter = document.getElementById('progressCounter');
+        const loaderScreen = document.getElementById('loaderScreen');
+        const portalScreen = document.getElementById('portalScreen');
+        const enterPortalBtn = document.getElementById('enterPortalBtn');
+        const backgroundAudio = document.getElementById('backgroundAudio');
+
+        const totalDurationMs = 2000; // Exact 2000 Milliseconds (2 Seconds)
+        const updateIntervalMs = 20;  // 50 Updates per second
+        const stepIncrement = 100 / (totalDurationMs / updateIntervalMs);
+
+        const progressTimer = setInterval(() => {
+            currentProgress += stepIncrement;
+
+            if (currentProgress >= 100) {
+                currentProgress = 100;
+                clearInterval(progressTimer);
+
+                // Seamless Transition Sequence
+                setTimeout(() => {
+                    loaderScreen.style.opacity = '0';
+                    loaderScreen.style.transform = 'scale(0.9)';
+
+                    setTimeout(() => {
+                        loaderScreen.style.display = 'none';
+                        portalScreen.style.display = 'block';
+
+                        setTimeout(() => {
+                            portalScreen.style.opacity = '1';
+                            portalScreen.style.transform = 'scale(1)';
+                        }, 50);
+                    }, 600);
+                }, 100);
+            }
+
+            progressFill.style.width = currentProgress + '%';
+            progressCounter.innerText = Math.floor(currentProgress) + '%';
+        }, updateIntervalMs);
+
+        /* ==========================================
+           AUDIO INTERACTION HANDLER
+           ========================================== */
+        enterPortalBtn.addEventListener('click', () => {
+            backgroundAudio.play().catch(err => {
+                console.log("Audio play blocked by browser:", err);
+            });
+            alert("Welcome to Calvorn's World!");
+        });
     </script>
 </body>
-  </html>
+</html>
