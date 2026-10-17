@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090909">
+<meta name="theme-color" content="#080808">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="CALVORN — Minecraft PvP Portfolio">
+<meta property="og:description" content="Enter the world of CALVORN. Minecraft PvP, tiers, projects and community.">
 <meta name="description" content="Nirob — CALVORN Minecraft PvP portfolio.">
-<title>CALVORN | Minecraft PvP</title>
+<title>CALVORN — Minecraft PvP Portfolio</title>
 <style>
 :root{--bg:#080808;--panel:#111;--red:#ff3038;--muted:#aaa;--line:#292929;--white:#f5f5f5}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 8%,#39101355,transparent 35%),radial-gradient(ellipse at 90% 45%,#4c080d22,transparent 34%)}
+::selection{background:#ff3038;color:#fff}
+.cursorGlow{position:fixed;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,#ff303810,transparent 68%);transform:translate(-50%,-50%)}
+.noise{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 button{font:inherit}
 .wrap{width:min(1120px,92%);margin:auto}
@@ -75,24 +81,52 @@ footer{padding:35px 0;color:#888}
 footer strong{color:#eee;letter-spacing:2px}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-.intro{position:fixed;inset:0;z-index:100;background:#070707;display:grid;place-items:center;text-align:center;padding:25px;transition:opacity .7s,visibility .7s}
+.intro{position:fixed;inset:0;z-index:100;background:#050505;display:grid;place-items:center;text-align:center;padding:25px;overflow:hidden;isolation:isolate;transition:opacity .9s,visibility .9s}
+#introCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.intro:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#4d0b1044,transparent 48%),linear-gradient(transparent 49.8%,#ff30380b 50%,transparent 50.2%);z-index:-1}
+.intro:after{content:"";position:absolute;inset:0;border:1px solid #ff30382c;margin:18px;pointer-events:none;box-shadow:inset 0 0 90px #ff18200a}
+.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.introInner{position:relative;max-width:760px;animation:introFloat 4s ease-in-out infinite}
+.introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1;position:relative;text-shadow:0 0 30px #ff30381c,0 0 90px #ff30381c;animation:logoReveal 1.2s cubic-bezier(.16,1,.3,1) both}
+.introLogo:after{content:"CALVORN";position:absolute;inset:0;color:#ff3038;opacity:.3;filter:blur(15px);z-index:-1}
+.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px #ff3038;animation:lineExpand 1.3s .2s both}
+.intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
+.intro .kicker{animation:fadeUp .9s .1s both}
+.intro p{animation:fadeUp .9s .3s both}
+#enterBtn{position:relative;overflow:hidden;animation:fadeUp .9s .45s both;box-shadow:0 0 30px #ff30381a}
+#enterBtn:before{content:"";position:absolute;top:-50%;left:-70%;width:40%;height:200%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,#ffffff65,transparent);animation:buttonShine 3.5s 1.2s infinite}
+.intro.exiting .introInner{animation:portalZoom .8s cubic-bezier(.7,0,.84,0) forwards}
+.intro.exiting:before{animation:shockFlash .8s ease forwards}
+@keyframes introFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes logoReveal{from{opacity:0;transform:translateY(24px) scale(.9);filter:blur(12px);letter-spacing:.08em}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);letter-spacing:-.08em}}
+@keyframes lineExpand{from{width:0;opacity:0}to{width:110px;opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes buttonShine{0%,65%{left:-70%}100%{left:140%}}
+@keyframes portalZoom{to{transform:scale(1.18);filter:blur(8px);opacity:0}}
+@keyframes shockFlash{0%{opacity:1}35%{opacity:1;background:radial-gradient(circle at center,#ff303855,transparent 55%)}100%{opacity:0}}
+.heroContent{animation:heroArrival 1s .1s both}
+@keyframes heroArrival{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .intro.hide{opacity:0;visibility:hidden;pointer-events:none}
 .introInner{max-width:700px}
 .introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1}
 .introLogo span{color:var(--red)}
 .introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px #ff3038}
 .intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
-@media(max-width:760px){.navinner{min-height:62px}.menu{display:block}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:#090909;padding:18px 4%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{min-height:620px}.heroContent{padding:75px 0}.grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.profileVisual{min-height:230px}.statgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:65px 0}.sectionHead{display:block}.banner{align-items:flex-start;flex-direction:column}.timelineItem{grid-template-columns:1fr;gap:5px}.socialCard{flex-wrap:wrap}.socialCard .btn{margin-left:0}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+@media(max-width:760px){.cursorGlow{display:none}.navinner{min-height:62px}.menu{display:block}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:#090909;padding:18px 4%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{min-height:620px}.heroContent{padding:75px 0}.grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.profileVisual{min-height:230px}.statgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:65px 0}.sectionHead{display:block}.banner{align-items:flex-start;flex-direction:column}.timelineItem{grid-template-columns:1fr;gap:5px}.socialCard{flex-wrap:wrap}.socialCard .btn{margin-left:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}#introCanvas{display:none}}
 </style>
 </head>
 <body>
+<div class="noise" aria-hidden="true"></div>
+<div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
 <div class="intro" id="intro">
+  <canvas id="introCanvas" aria-hidden="true"></canvas>
   <div class="introInner">
     <div class="kicker">Minecraft PvP Portfolio</div>
     <div class="introLogo">CAL<span>VORN</span></div>
     <div class="introLine"></div>
     <p>Precision · Practice · PvP</p>
+    <div style="color:#777;font-size:.68rem;letter-spacing:2px;margin:0 0 18px">INITIALIZING PLAYER PROFILE <span style="color:#ff3038">// 001</span></div>
     <button class="btn primary" id="enterBtn">EXPLORE MY WORLD ↗</button>
   </div>
 </div>
@@ -107,14 +141,14 @@ footer strong{color:#eee;letter-spacing:2px}
 </header>
 <main>
 <section class="hero" id="home"><div class="wrap heroContent">
-  <div class="kicker">Independent Minecraft PvP Player</div>
+  <div class="kicker">Independent Minecraft PvP Player · Bangladesh</div>
   <h1>PLAY BOLD.<br><span>STAY CALVORN.</span></h1>
   <p>I'm Nirob — a Minecraft PvP player focused on improving mechanics, mastering different combat styles, and building my own place in the community.</p>
   <div class="actions"><a class="btn primary" href="#pvp">Explore My PvP ↓</a><a class="btn secondary" href="#socials">Connect With Me ↗</a></div>
-  <div class="heroTags"><span class="pill"><b>UHC</b> · HT3</span><span class="pill"><b>Crystal Main</b> · HT3</span><span class="pill"><b>Spear PvP</b> · HT4</span></div>
+  <div class="heroTags"><span class="pill"><b>UHC</b> · HT3</span><span class="pill"><b>Crystal Main</b> · HT3</span><span class="pill"><b>Spear PvP</b> · HT4</span><span class="pill"><b>STATUS</b> · ONLINE IN SPIRIT</span></div>
 </div></section>
 <section class="section" id="about"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">Who is behind the name?</div><h2>MEET NIROB.</h2><p class="lead">The player behind CALVORN. A personal space for my PvP journey, communities, and future achievements.</p></div></div>
+  <div class="sectionHead"><div><div class="eyebrow">01 / Player identity</div><h2>MEET NIROB.</h2><p class="lead">The player behind CALVORN. A personal space for my PvP journey, communities, and future achievements.</p></div></div>
   <div class="profile reveal"><div class="profileVisual"><div><div class="monogram">C.</div><small>CALVORN / NIROB</small></div></div>
     <div class="profileInfo">
       <div class="infoBox"><span>Real Name</span><strong>Nirob</strong></div><div class="infoBox"><span>Minecraft Username</span><strong>itz_calvorn</strong></div>
@@ -124,7 +158,7 @@ footer strong{color:#eee;letter-spacing:2px}
   </div>
 </div></section>
 <section class="section" id="pvp"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">Combat profile</div><h2>PVP TIERS.</h2><p class="lead">My current listed gamemodes and tiers. More achievements can be added as the journey continues.</p></div></div>
+  <div class="sectionHead"><div><div class="eyebrow">02 / Combat profile</div><h2>PVP TIERS.</h2><p class="lead">My current listed gamemodes and tiers. More achievements can be added as the journey continues.</p></div></div>
   <div class="grid">
     <article class="card reveal"><div class="icon">💎</div><div class="smallLabel">Main gamemode</div><h3>Crystal PvP</h3><p>My main combat style — focused on timing, movement, and clean execution.</p><div class="tier">HT3</div></article>
     <article class="card reveal"><div class="icon">🗡️</div><div class="smallLabel">Combat tier</div><h3>Spear PvP</h3><p>Working on spacing, aim, and finding the right moment to strike.</p><div class="tier">HT4</div></article>
@@ -135,11 +169,11 @@ footer strong{color:#eee;letter-spacing:2px}
   </div>
 </div></section>
 <section class="section" id="stats"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">The journey so far</div><h2>PLAYER SNAPSHOT.</h2><p class="lead">A quick profile overview. Only confirmed details are shown here; stats can be updated whenever you have exact numbers.</p></div></div>
+  <div class="sectionHead"><div><div class="eyebrow">03 / Player snapshot</div><h2>PLAYER SNAPSHOT.</h2><p class="lead">A quick profile overview. Only confirmed details are shown here; stats can be updated whenever you have exact numbers.</p></div></div>
   <div class="statgrid reveal"><div class="stat"><strong>03</strong><span>Listed PvP Tiers</span></div><div class="stat"><strong>01</strong><span>Main Gamemode</span></div><div class="stat"><strong>∞</strong><span>Room to Improve</span></div><div class="stat"><strong>100%</strong><span>Player Journey</span></div></div>
 </div></section>
 <section class="section" id="projects"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">Community & creation</div><h2>PROJECTS & JOURNEY.</h2><p class="lead">A place for Minecraft projects, communities, and things built along the way.</p></div></div>
+  <div class="sectionHead"><div><div class="eyebrow">04 / Community & creation</div><h2>PROJECTS & JOURNEY.</h2><p class="lead">A place for Minecraft projects, communities, and things built along the way.</p></div></div>
   <div class="timeline">
     <div class="timelineItem reveal"><b>COMMUNITY</b><div><strong>Minecraft PvP Communities</strong><p>Practicing, meeting other players, and taking part in the Minecraft PvP scene.</p></div></div>
     <div class="timelineItem reveal"><b>PROJECTS</b><div><strong>Server & Team Experience</strong><p>Use this section to feature your server projects, team roles, or collaborations as you choose.</p></div></div>
@@ -147,7 +181,7 @@ footer strong{color:#eee;letter-spacing:2px}
   </div>
 </div></section>
 <section class="section" id="socials"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">Find me online</div><h2>LET'S CONNECT.</h2><p class="lead">Join the community or reach out through my profile links.</p></div></div>
+  <div class="sectionHead"><div><div class="eyebrow">05 / Find me online</div><h2>LET'S CONNECT.</h2><p class="lead">Join the community or reach out through my profile links.</p></div></div>
   <div class="grid">
     <div class="card socialCard reveal"><div class="socialIcon">D</div><div><div class="smallLabel">Discord username</div><h3>_nyxargaming</h3><p>Connect with me on Discord.</p></div></div>
     <div class="card socialCard reveal"><div class="socialIcon">MC</div><div><div class="smallLabel">Minecraft</div><h3>itz_calvorn</h3><p>Find me in the blocky world.</p></div></div>
@@ -164,8 +198,12 @@ footer strong{color:#eee;letter-spacing:2px}
 <footer><div class="wrap footerInner"><div><strong>CALVORN</strong><div>Built around the player. Driven by PvP.</div></div><div>© <span id="year"></span> CALVORN · Nirob</div></div></footer>
 <script>
 const intro=document.getElementById('intro');
-document.getElementById('enterBtn').addEventListener('click',()=>{intro.classList.add('hide');sessionStorage.setItem('calvornEntered','yes')});
-if(sessionStorage.getItem('calvornEntered')==='yes')intro.classList.add('hide');
+const enterBtn=document.getElementById('enterBtn');
+enterBtn.addEventListener('click',()=>{intro.classList.add('exiting');document.body.classList.add('entered');setTimeout(()=>intro.classList.add('hide'),680);try{sessionStorage.setItem('calvornEntered','yes')}catch(e){}});
+try{if(sessionStorage.getItem('calvornEntered')==='yes')intro.classList.add('hide')}catch(e){}
+// Lightweight cinematic particle field; no external libraries or assets required.
+(()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,48,56,${p.a})`;ctx.shadowBlur=10;ctx.shadowColor='#ff3038';ctx.fill()}ctx.shadowBlur=0;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
+const glow=document.getElementById('cursorGlow');window.addEventListener('pointermove',e=>{if(glow&&e.pointerType!=='touch'){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
 document.getElementById('year').textContent=new Date().getFullYear();
 const menuBtn=document.getElementById('menuBtn'),navlinks=document.getElementById('navlinks');
 menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
@@ -174,4 +212,4 @@ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entr
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
-</html>
+                                                                                                                                                                                                                                 </html>
