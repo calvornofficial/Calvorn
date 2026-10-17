@@ -3,56 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#09090d">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Nirob — CALVORN Minecraft PvP portfolio.">
 <title>CALVORN | Minecraft PvP</title>
 <style>
-:root{--red:#ff2848;--red2:#a90825;--bg:#08090d;--panel:rgba(19,20,28,.78);--line:rgba(255,255,255,.11);--muted:#a5a7b3}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.09;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%)}a{color:inherit;text-decoration:none}button{font:inherit}.nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,5vw,70px);border-bottom:1px solid #ffffff1a;background:linear-gradient(#050609a8,transparent)}.brand{font-weight:1000;letter-spacing:4px;font-size:20px}.brand b{color:var(--red)}.nav small{font-size:10px;letter-spacing:3px;color:#c9cad3}.hero{min-height:100svh;position:relative;display:flex;align-items:center;padding:115px clamp(22px,9vw,140px) 80px;isolation:isolate;overflow:hidden;background:linear-gradient(90deg,rgba(5,6,10,.96) 0%,rgba(5,6,10,.72) 48%,rgba(5,6,10,.2) 100%),linear-gradient(0deg,#08090d 0%,transparent 30%),url('https://images.unsplash.com/photo-1607513746994-51f730a44832?auto=format&fit=crop&w=2200&q=85') center/cover no-repeat}.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 72% 48%,#ff16351f,transparent 48%);z-index:-1}.hero-content{max-width:850px;position:relative;z-index:2;animation:heroIn 1.1s both}.eyebrow{display:flex;align-items:center;gap:12px;color:#ff5269;font-size:11px;letter-spacing:5px;font-weight:800}.eyebrow:before{content:"";width:34px;height:2px;background:var(--red);box-shadow:0 0 14px var(--red)}h1{font-size:clamp(58px,12vw,150px);line-height:.82;letter-spacing:-.075em;margin:28px 0 24px;font-weight:1000;text-shadow:0 0 45px #ff18331b}h1 span{display:block;color:transparent;-webkit-text-stroke:1px #ffffffa8}.hero p{max-width:500px;color:#c3c4cd;line-height:1.8;font-size:14px}.hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}.btn{border:1px solid #ffffff30;padding:16px 22px;display:inline-flex;align-items:center;justify-content:center;gap:15px;font-size:11px;font-weight:900;letter-spacing:2px;cursor:pointer;transition:.25s}.btn-primary{background:linear-gradient(110deg,#8c071d,var(--red));border-color:#ff566b;box-shadow:0 0 32px #ff183344;position:relative;overflow:hidden}.btn-primary:after{content:"";position:absolute;inset:-40% auto -40% -45%;width:30%;background:#ffffff55;transform:skewX(-25deg);animation:shine 3.4s infinite}.btn:hover{transform:translateY(-4px);box-shadow:0 12px 35px #ff17352b}.btn-ghost{background:#ffffff08;backdrop-filter:blur(8px)}.hero-bottom{position:absolute;bottom:30px;left:clamp(22px,9vw,140px);right:clamp(22px,9vw,140px);display:flex;justify-content:space-between;color:#858792;font-size:9px;letter-spacing:3px}.scroll-line{display:inline-block;width:45px;height:1px;background:var(--red);vertical-align:middle;margin-right:10px}.hero-glow{position:absolute;right:8%;top:32%;width:270px;height:270px;border:1px solid #ff29482b;border-radius:50%;box-shadow:0 0 100px #ff12301b,inset 0 0 70px #ff123015;animation:float 7s ease-in-out infinite}.hero-glow:before,.hero-glow:after{content:"";position:absolute;inset:22px;border:1px dashed #ff294833;border-radius:50%;animation:spin 35s linear infinite}.hero-glow:after{inset:54px;border-style:solid;animation-direction:reverse}.section{padding:95px clamp(20px,7vw,100px);position:relative}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:35px}.kicker{color:var(--red);font-size:10px;letter-spacing:4px;font-weight:900}.section h2{font-size:clamp(32px,5vw,62px);line-height:1;margin:12px 0 0;letter-spacing:-2px}.section-head p{max-width:360px;color:var(--muted);font-size:12px;line-height:1.8}.profile-grid{display:grid;grid-template-columns:1.05fr 1.6fr;gap:18px}.glass{background:linear-gradient(135deg,#171820d9,#101116c9);border:1px solid var(--line);backdrop-filter:blur(16px);border-radius:16px;padding:27px;position:relative;overflow:hidden}.glass:before{content:"";position:absolute;top:0;left:0;width:90px;height:2px;background:var(--red);box-shadow:0 0 20px var(--red)}.profile-card{min-height:290px;display:flex;flex-direction:column;justify-content:space-between}.status{font-size:10px;letter-spacing:2px;color:#8df0bd}.status:before{content:"";display:inline-block;width:6px;height:6px;background:#8df0bd;border-radius:50%;margin-right:9px;box-shadow:0 0 10px #8df0bd}.ign{font-size:clamp(25px,4vw,42px);font-weight:1000;letter-spacing:-1.5px;margin:12px 0}.muted{color:var(--muted);font-size:12px;line-height:1.8}.tag{display:inline-block;border:1px solid #ff29484d;color:#ff6479;background:#ff183510;padding:8px 10px;font-size:9px;letter-spacing:2px;margin:4px 4px 0 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.stat{padding:16px;border:1px solid var(--line);background:#ffffff04;border-radius:10px}.stat strong{font-size:25px;display:block}.stat span{font-size:9px;color:var(--muted);letter-spacing:2px}.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tier{padding:18px;border:1px solid var(--line);border-radius:12px;background:#ffffff04;display:flex;align-items:center;gap:14px;transition:.25s}.tier:hover{border-color:#ff29486b;transform:translateY(-3px);background:#ff18330b}.tier-icon{width:43px;height:43px;display:grid;place-items:center;border:1px solid #ff29484c;background:#ff183310;border-radius:10px;font-size:22px}.tier-name{font-weight:900;font-size:13px}.tier-sub{font-size:9px;color:var(--muted);letter-spacing:2px;margin-top:5px}.tier-rank{margin-left:auto;font-weight:1000;color:#ff5269;font-size:19px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.feature{min-height:205px}.feature .num{font-size:10px;color:var(--red);letter-spacing:3px}.feature h3{font-size:21px;margin:28px 0 9px}.feature p{color:var(--muted);font-size:12px;line-height:1.8}.feature .symbol{position:absolute;right:20px;top:18px;font-size:30px;opacity:.15}.quote{font-size:clamp(24px,4vw,48px);line-height:1.25;letter-spacing:-1.5px;font-weight:900;max-width:900px}.quote em{font-style:normal;color:var(--red)}.contact{background:radial-gradient(ellipse at 50% 100%,#9b082326,transparent 65%),#0c0d12;text-align:center;border-top:1px solid var(--line)}.contact .section-head{display:block}.contact .section-head p{margin:20px auto}.socials{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:28px}.footer{padding:22px clamp(20px,7vw,100px);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;color:#777985;font-size:9px;letter-spacing:2px}.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.reveal.show{opacity:1;transform:translateY(0)}#transition{position:fixed;inset:0;z-index:1000;background:#08090d;display:grid;place-items:center;clip-path:circle(0% at 50% 50%);visibility:hidden;transition:clip-path 1s cubic-bezier(.7,0,.2,1),visibility 1s;overflow:hidden}#transition.active{clip-path:circle(150% at 50% 50%);visibility:visible}#transition .trans-inner{text-align:center;opacity:0;transform:scale(.8);transition:.6s .35s}#transition.active .trans-inner{opacity:1;transform:scale(1)}.loader-ring{width:75px;height:75px;border:2px solid #49121c;border-top-color:var(--red);border-radius:50%;margin:0 auto 28px;animation:spin .8s linear infinite;box-shadow:0 0 35px #ff284822}.trans-title{font-size:clamp(26px,7vw,60px);font-weight:1000;letter-spacing:4px;color:var(--red);text-shadow:0 0 30px #ff284855}.trans-sub{font-size:10px;letter-spacing:5px;color:#aaa;margin-top:12px}.particle{position:absolute;width:3px;height:3px;background:var(--red);border-radius:50%;box-shadow:0 0 12px var(--red);animation:rise linear infinite;opacity:0}.back-top{position:fixed;right:17px;bottom:17px;z-index:20;background:#ff2848;color:white;border:0;width:42px;height:42px;border-radius:50%;font-size:18px;box-shadow:0 0 25px #ff284855;cursor:pointer}
-@keyframes heroIn{from{opacity:0;transform:translateY(25px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}@keyframes shine{0%,65%{left:-45%}100%{left:130%}}@keyframes float{50%{transform:translateY(-20px) rotate(7deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes rise{from{transform:translateY(30px);opacity:0}20%{opacity:.8}to{transform:translateY(-110vh);opacity:0}}
-@media(max-width:800px){.hero{background-position:60% center}.hero-glow{right:-100px;width:220px;height:220px}.profile-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.section{padding-top:70px;padding-bottom:70px}.section-head{display:block}.section-head p{margin-top:15px}.hero-bottom{font-size:8px}.nav small{display:none}}@media(max-width:430px){.tiers{grid-template-columns:1fr}.hero{padding-top:130px}.hero p{font-size:13px}.btn{width:100%}.hero-actions{max-width:300px}.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.footer{flex-direction:column}}
+:root{--bg:#080808;--panel:#111;--red:#ff3038;--muted:#aaa;--line:#292929;--white:#f5f5f5}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 8%,#39101355,transparent 35%),radial-gradient(ellipse at 90% 45%,#4c080d22,transparent 34%)}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.wrap{width:min(1120px,92%);margin:auto}
+.nav{position:sticky;top:0;z-index:20;background:#080808e8;backdrop-filter:blur(16px);border-bottom:1px solid #262626}
+.navinner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:1000;letter-spacing:3px;font-size:1.25rem}.brand span{color:var(--red)}
+.navlinks{display:flex;align-items:center;gap:20px;font-size:.86rem;color:#ddd}
+.navlinks a:hover{color:var(--red)}
+.menu{display:none;background:#171717;color:white;border:1px solid #333;border-radius:10px;padding:8px 12px}
+.hero{min-height:690px;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#080808 5%,#080808e8 42%,#08080866 100%),radial-gradient(ellipse at 78% 45%,#a40d1738,transparent 48%),repeating-linear-gradient(135deg,transparent 0 38px,#ffffff04 39px 40px)}
+.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid #ff30382b;border-radius:50%;right:7%;top:17%;box-shadow:0 0 0 35px #ff30380a,0 0 0 80px #ff303806}
+.heroContent{position:relative;z-index:1;padding:85px 0}
+.kicker{color:var(--red);font-size:.78rem;font-weight:900;letter-spacing:4px;text-transform:uppercase}
+h1{font-size:clamp(3.5rem,11vw,7.8rem);line-height:.92;letter-spacing:-.075em;margin:18px 0;font-weight:1000}
+h1 span{color:var(--red);text-shadow:0 0 35px #ff30382b}
+.hero p{max-width:590px;color:#c3c3c3;font-size:1.08rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:9px;border:1px solid #383838;font-weight:850;transition:.22s;cursor:pointer}
+.btn.primary{background:var(--red);border-color:var(--red);color:white}
+.btn.secondary{background:#121212}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px #ff303822}
+.heroTags{display:flex;gap:9px;flex-wrap:wrap;margin-top:35px}
+.pill{border:1px solid #343434;background:#101010;padding:7px 11px;border-radius:999px;color:#d7d7d7;font-size:.8rem}
+.pill b{color:var(--red)}
+.section{padding:86px 0;border-bottom:1px solid #202020}
+.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}
+.eyebrow{color:var(--red);font-size:.73rem;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+h2{font-size:clamp(2rem,5vw,3.3rem);line-height:1.05;margin:8px 0 0;letter-spacing:-.04em}
+.lead{color:var(--muted);max-width:650px;margin:12px 0 0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid #2c2c2c;border-radius:16px;padding:23px;transition:transform .25s,border-color .25s;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);border-color:#a82a30}
+.card:before{content:"";position:absolute;width:120px;height:120px;right:-65px;top:-65px;border-radius:50%;background:#ff303810}
+.card .icon{font-size:1.55rem}
+.card h3{font-size:1.13rem;margin:10px 0 5px}
+.card p{color:#aaa;margin:0;font-size:.92rem}
+.tier{font-size:1.55rem;font-weight:1000;color:var(--red);margin-top:14px;letter-spacing:-.03em}
+.smallLabel{font-size:.7rem;letter-spacing:2px;color:#777;font-weight:900;text-transform:uppercase}
+.profile{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
+.profileVisual{min-height:310px;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 45%,#6b111b55,transparent 45%),linear-gradient(145deg,#181818,#0a0a0a);border:1px solid #303030;border-radius:18px;position:relative;overflow:hidden}
+.profileVisual .monogram{font-size:clamp(5rem,14vw,9rem);font-weight:1000;color:#ff3038;letter-spacing:-.1em;text-shadow:0 0 55px #ff303833}
+.profileVisual small{display:block;color:#aaa;letter-spacing:4px;font-weight:800}
+.profileInfo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.infoBox{background:#101010;border:1px solid #292929;border-radius:12px;padding:17px}
+.infoBox span{display:block;color:#888;font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px}
+.infoBox strong{display:block;margin-top:6px;font-size:1rem;overflow-wrap:anywhere}
+.banner{border:1px solid #442125;border-radius:18px;padding:32px;background:linear-gradient(110deg,#260b0e,#111 60%,#1b0b0c);display:flex;align-items:center;justify-content:space-between;gap:22px}
+.banner h3{font-size:clamp(1.5rem,4vw,2.3rem);margin:0}.banner p{color:#bbb;margin:8px 0 0}
+.statgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.stat{text-align:center;padding:24px 12px;border:1px solid #292929;border-radius:14px;background:#101010}
+.stat strong{font-size:2rem;color:var(--red);display:block;line-height:1.2}.stat span{font-size:.8rem;color:#aaa}
+.timeline{display:grid;gap:12px}
+.timelineItem{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:20px;border-left:2px solid var(--red);background:#101010;border-radius:0 12px 12px 0}
+.timelineItem b{color:var(--red)}.timelineItem p{color:#aaa;margin:4px 0 0}
+.socialCard{display:flex;align-items:center;gap:14px}
+.socialIcon{height:48px;width:48px;flex-shrink:0;border-radius:13px;background:#261013;border:1px solid #5a2228;display:grid;place-items:center;font-size:1.2rem;color:#ff646a;font-weight:1000}
+.socialCard .btn{margin-left:auto;white-space:nowrap}
+footer{padding:35px 0;color:#888}
+.footerInner{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+footer strong{color:#eee;letter-spacing:2px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.intro{position:fixed;inset:0;z-index:100;background:#070707;display:grid;place-items:center;text-align:center;padding:25px;transition:opacity .7s,visibility .7s}
+.intro.hide{opacity:0;visibility:hidden;pointer-events:none}
+.introInner{max-width:700px}
+.introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1}
+.introLogo span{color:var(--red)}
+.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px #ff3038}
+.intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
+@media(max-width:760px){.navinner{min-height:62px}.menu{display:block}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:#090909;padding:18px 4%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{min-height:620px}.heroContent{padding:75px 0}.grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.profileVisual{min-height:230px}.statgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:65px 0}.sectionHead{display:block}.banner{align-items:flex-start;flex-direction:column}.timelineItem{grid-template-columns:1fr;gap:5px}.socialCard{flex-wrap:wrap}.socialCard .btn{margin-left:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<nav class="nav"><a class="brand" href="#top">CALVORN<b>.</b></a><small>MINECRAFT JAVA · COMPETITIVE PVP</small><a href="#contact" class="btn btn-ghost" style="padding:11px 14px">CONTACT ↗</a></nav>
-<header class="hero" id="top">
-  <div class="hero-glow"></div><div class="hero-content">
-    <div class="eyebrow">MINECRAFT PVPER / PLAYER PROFILE</div>
-    <h1>CAL<span>VORN</span></h1>
-    <p>Focused on precision, combos and clean mechanics. Welcome to my world — explore my PvP profile, tiers, playstyle and more.</p>
-    <div class="hero-actions"><button class="btn btn-primary" id="explore">EXPLORE MY WORLD <span>↗</span></button><a class="btn btn-ghost" href="#tiers">VIEW MY TIERS ↓</a></div>
+<div class="intro" id="intro">
+  <div class="introInner">
+    <div class="kicker">Minecraft PvP Portfolio</div>
+    <div class="introLogo">CAL<span>VORN</span></div>
+    <div class="introLine"></div>
+    <p>Precision · Practice · PvP</p>
+    <button class="btn primary" id="enterBtn">EXPLORE MY WORLD ↗</button>
   </div>
-  <div class="hero-bottom"><span><i class="scroll-line"></i> SCROLL TO EXPLORE</span><span>IGN: ITZ_CALVORN</span></div>
+</div>
+<header class="nav">
+  <div class="wrap navinner">
+    <a class="brand" href="#home">CAL<span>VORN</span></a>
+    <button class="menu" id="menuBtn" aria-label="Open navigation">☰ Menu</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">About</a><a href="#pvp">PvP Tiers</a><a href="#stats">Stats</a><a href="#projects">Projects</a><a href="#socials">Socials</a><a href="#ownz">OWNZ</a>
+    </nav>
+  </div>
 </header>
-<main id="world">
-<section class="section" id="profile"><div class="section-head reveal"><div><div class="kicker">01 / PLAYER PROFILE</div><h2>THE PLAYER<br>BEHIND THE NAME.</h2></div><p>A competitive Minecraft PvPer who values consistency, timing, movement and smart fights.</p></div>
-<div class="profile-grid"><article class="glass profile-card reveal"><div><div class="status">PLAYER PROFILE</div><div class="ign">itz_calvorn</div><p class="muted">Minecraft Java Edition · PvPer</p></div><div><span class="tag">COMBAT MAIN</span><span class="tag">COMPETITIVE</span><span class="tag">CALVORN</span></div></article>
-<article class="glass reveal"><div class="kicker">PLAYER OVERVIEW</div><div class="stats"><div class="stat"><strong>04</strong><span>MAIN MODES</span></div><div class="stat"><strong>HT4</strong><span>SWORD / MACE</span></div><div class="stat"><strong>HT3</strong><span>AXE / CRYSTAL</span></div></div><p class="muted" style="margin-top:20px">Personal profile showcase. Tier labels below are editable — update them whenever your real rankings change.</p></article></div>
-</section>
-<section class="section" id="tiers" style="padding-top:25px"><div class="section-head reveal"><div><div class="kicker">02 / COMBAT RANKINGS</div><h2>MY PVP TIERS.</h2></div><p>Four main kits. One mindset: keep improving.</p></div>
-<div class="tiers">
-<div class="tier reveal"><div class="tier-icon">⚔</div><div><div class="tier-name">Sword</div><div class="tier-sub">SWORD PVP</div></div><div class="tier-rank">HT4</div></div>
-<div class="tier reveal"><div class="tier-icon">☄</div><div><div class="tier-name">Mace</div><div class="tier-sub">MACE PVP</div></div><div class="tier-rank">HT4</div></div>
-<div class="tier reveal"><div class="tier-icon">✦</div><div><div class="tier-name">Crystal</div><div class="tier-sub">CRYSTAL PVP</div></div><div class="tier-rank">HT3</div></div>
-<div class="tier reveal"><div class="tier-icon">🪓</div><div><div class="tier-name">Axe</div><div class="tier-sub">AXE PVP</div></div><div class="tier-rank">HT3</div></div>
-<div class="tier reveal"><div class="tier-icon">◈</div><div><div class="tier-name">UHC</div><div class="tier-sub">COMING SOON</div></div><div class="tier-rank">—</div></div>
-<div class="tier reveal"><div class="tier-icon">◇</div><div><div class="tier-name">SMP / Pot</div><div class="tier-sub">MORE MODES</div></div><div class="tier-rank">—</div></div>
+<main>
+<section class="hero" id="home"><div class="wrap heroContent">
+  <div class="kicker">Independent Minecraft PvP Player</div>
+  <h1>PLAY BOLD.<br><span>STAY CALVORN.</span></h1>
+  <p>I'm Nirob — a Minecraft PvP player focused on improving mechanics, mastering different combat styles, and building my own place in the community.</p>
+  <div class="actions"><a class="btn primary" href="#pvp">Explore My PvP ↓</a><a class="btn secondary" href="#socials">Connect With Me ↗</a></div>
+  <div class="heroTags"><span class="pill"><b>UHC</b> · HT3</span><span class="pill"><b>Crystal Main</b> · HT3</span><span class="pill"><b>Spear PvP</b> · HT4</span></div>
 </div></section>
-<section class="section" id="style"><div class="section-head reveal"><div><div class="kicker">03 / MY PLAYSTYLE</div><h2>BUILT FOR THE FIGHT.</h2></div><p>My approach to competitive combat.</p></div>
-<div class="cards"><article class="glass feature reveal"><span class="num">01 — MECHANICS</span><span class="symbol">✦</span><h3>Clean Combos</h3><p>Control spacing, keep pressure and make every hit count.</p></article><article class="glass feature reveal"><span class="num">02 — MOVEMENT</span><span class="symbol">⌁</span><h3>Smart Movement</h3><p>Use positioning, timing and movement to create the advantage.</p></article><article class="glass feature reveal"><span class="num">03 — MINDSET</span><span class="symbol">◈</span><h3>Always Improving</h3><p>Learn from every fight. Stay consistent. Keep leveling up.</p></article></div>
-</section>
-<section class="section"><div class="glass reveal" style="padding:clamp(25px,6vw,65px)"><div class="kicker">THE CALVORN MINDSET</div><p class="quote">“Skill gets attention.<br><em>Consistency earns respect.</em>”</p><p class="muted">Every duel is another chance to improve.</p></div></section>
-<section class="section contact" id="contact"><div class="section-head reveal"><div class="kicker">04 / CONNECT</div><h2>LET'S CONNECT.</h2><p>Want to duel, collaborate or talk Minecraft PvP? Find me through my socials.</p></div><div class="socials reveal"><a class="btn btn-primary" href="https://discord.com/" target="_blank" rel="noopener">DISCORD ↗</a><a class="btn btn-ghost" href="https://youtube.com/" target="_blank" rel="noopener">YOUTUBE ↗</a><button class="btn btn-ghost" id="copyIgn">COPY IGN ↗</button></div><p class="muted" id="copyStatus" style="margin-top:18px"></p></section>
+<section class="section" id="about"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">Who is behind the name?</div><h2>MEET NIROB.</h2><p class="lead">The player behind CALVORN. A personal space for my PvP journey, communities, and future achievements.</p></div></div>
+  <div class="profile reveal"><div class="profileVisual"><div><div class="monogram">C.</div><small>CALVORN / NIROB</small></div></div>
+    <div class="profileInfo">
+      <div class="infoBox"><span>Real Name</span><strong>Nirob</strong></div><div class="infoBox"><span>Minecraft Username</span><strong>itz_calvorn</strong></div>
+      <div class="infoBox"><span>Discord</span><strong>_nyxargaming</strong></div><div class="infoBox"><span>Main Focus</span><strong>Crystal PvP</strong></div>
+      <div class="infoBox"><span>Playstyle</span><strong>Competitive / Practice</strong></div><div class="infoBox"><span>Theme</span><strong>Black & Red</strong></div>
+    </div>
+  </div>
+</div></section>
+<section class="section" id="pvp"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">Combat profile</div><h2>PVP TIERS.</h2><p class="lead">My current listed gamemodes and tiers. More achievements can be added as the journey continues.</p></div></div>
+  <div class="grid">
+    <article class="card reveal"><div class="icon">💎</div><div class="smallLabel">Main gamemode</div><h3>Crystal PvP</h3><p>My main combat style — focused on timing, movement, and clean execution.</p><div class="tier">HT3</div></article>
+    <article class="card reveal"><div class="icon">🗡️</div><div class="smallLabel">Combat tier</div><h3>Spear PvP</h3><p>Working on spacing, aim, and finding the right moment to strike.</p><div class="tier">HT4</div></article>
+    <article class="card reveal"><div class="icon">⚔️</div><div class="smallLabel">Combat tier</div><h3>UHC</h3><p>Classic survival combat, smart trades, and consistent mechanics.</p><div class="tier">HT3</div></article>
+    <article class="card reveal"><div class="icon">🪓</div><div class="smallLabel">Additional mode</div><h3>Axe PvP</h3><p>A place to showcase future progress and tier updates.</p><div class="tier">Coming Soon</div></article>
+    <article class="card reveal"><div class="icon">🛡️</div><div class="smallLabel">Additional mode</div><h3>Sword PvP</h3><p>Movement, combos, and pressure in close-range fights.</p><div class="tier">Coming Soon</div></article>
+    <article class="card reveal"><div class="icon">🏹</div><div class="smallLabel">Player journey</div><h3>More Modes</h3><p>This portfolio can grow with new gamemodes and achievements.</p><div class="tier">In Progress</div></article>
+  </div>
+</div></section>
+<section class="section" id="stats"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">The journey so far</div><h2>PLAYER SNAPSHOT.</h2><p class="lead">A quick profile overview. Only confirmed details are shown here; stats can be updated whenever you have exact numbers.</p></div></div>
+  <div class="statgrid reveal"><div class="stat"><strong>03</strong><span>Listed PvP Tiers</span></div><div class="stat"><strong>01</strong><span>Main Gamemode</span></div><div class="stat"><strong>∞</strong><span>Room to Improve</span></div><div class="stat"><strong>100%</strong><span>Player Journey</span></div></div>
+</div></section>
+<section class="section" id="projects"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">Community & creation</div><h2>PROJECTS & JOURNEY.</h2><p class="lead">A place for Minecraft projects, communities, and things built along the way.</p></div></div>
+  <div class="timeline">
+    <div class="timelineItem reveal"><b>COMMUNITY</b><div><strong>Minecraft PvP Communities</strong><p>Practicing, meeting other players, and taking part in the Minecraft PvP scene.</p></div></div>
+    <div class="timelineItem reveal"><b>PROJECTS</b><div><strong>Server & Team Experience</strong><p>Use this section to feature your server projects, team roles, or collaborations as you choose.</p></div></div>
+    <div class="timelineItem reveal"><b>NEXT GOAL</b><div><strong>Keep Improving</strong><p>More tiers, clips, and milestones can be added to make this portfolio uniquely yours.</p></div></div>
+  </div>
+</div></section>
+<section class="section" id="socials"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">Find me online</div><h2>LET'S CONNECT.</h2><p class="lead">Join the community or reach out through my profile links.</p></div></div>
+  <div class="grid">
+    <div class="card socialCard reveal"><div class="socialIcon">D</div><div><div class="smallLabel">Discord username</div><h3>_nyxargaming</h3><p>Connect with me on Discord.</p></div></div>
+    <div class="card socialCard reveal"><div class="socialIcon">MC</div><div><div class="smallLabel">Minecraft</div><h3>itz_calvorn</h3><p>Find me in the blocky world.</p></div></div>
+    <div class="card socialCard reveal"><div class="socialIcon">▶</div><div><div class="smallLabel">Video content</div><h3>YouTube</h3><p>Add your channel link here later.</p></div></div>
+  </div>
+</div></section>
+<section class="section" id="ownz"><div class="wrap">
+  <div class="banner reveal"><div><div class="eyebrow">Community server</div><h3>JOIN THE OWNZ COMMUNITY.</h3><p>Meet the community, connect with players, and be part of the server.</p></div><a class="btn primary" href="https://discord.gg/dUse85kMR" target="_blank" rel="noopener noreferrer">Join OWNZ Discord ↗</a></div>
+</div></section>
+<section class="section"><div class="wrap">
+  <div class="banner reveal"><div><div class="eyebrow">Your next fight starts here</div><h3>THIS IS ONLY THE BEGINNING.</h3><p>CALVORN is always evolving — more progress, more goals, more PvP.</p></div><a class="btn secondary" href="#home">Back to Top ↑</a></div>
+</div></section>
 </main>
-<footer class="footer"><span>© 2026 CALVORN</span><span>BUILT FOR THE NEXT LEVEL.</span><a href="#top">BACK TO TOP ↑</a></footer>
-<div id="transition" aria-hidden="true"><div class="trans-inner"><div class="loader-ring"></div><div class="trans-title">ENTERING CALVORN</div><div class="trans-sub">LOADING YOUR WORLD...</div></div></div>
-<button class="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<footer><div class="wrap footerInner"><div><strong>CALVORN</strong><div>Built around the player. Driven by PvP.</div></div><div>© <span id="year"></span> CALVORN · Nirob</div></div></footer>
 <script>
-const transition=document.getElementById('transition');
-document.getElementById('explore').addEventListener('click',()=>{transition.classList.add('active');setTimeout(()=>{document.getElementById('world').scrollIntoView({behavior:'smooth'});setTimeout(()=>transition.classList.remove('active'),450)},1300)});
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.12});
+const intro=document.getElementById('intro');
+document.getElementById('enterBtn').addEventListener('click',()=>{intro.classList.add('hide');sessionStorage.setItem('calvornEntered','yes')});
+if(sessionStorage.getItem('calvornEntered')==='yes')intro.classList.add('hide');
+document.getElementById('year').textContent=new Date().getFullYear();
+const menuBtn=document.getElementById('menuBtn'),navlinks=document.getElementById('navlinks');
+menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-for(let i=0;i<26;i++){const p=document.createElement('i');p.className='particle';p.style.left=Math.random()*100+'%';p.style.bottom='-10px';p.style.animationDuration=(7+Math.random()*9)+'s';p.style.animationDelay=(Math.random()*10)+'s';document.body.appendChild(p)}
-document.getElementById('copyIgn').addEventListener('click',async()=>{const status=document.getElementById('copyStatus');try{await navigator.clipboard.writeText('itz_calvorn');status.textContent='IGN COPIED: itz_calvorn'}catch(e){status.textContent='Your IGN: itz_calvorn'}});
 </script>
 </body>
-  </html>
+</html>
