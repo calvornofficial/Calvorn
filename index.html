@@ -10,13 +10,13 @@
 <meta name="description" content="Nirob — CALVORN Minecraft PvP portfolio.">
 <title>CALVORN — Minecraft PvP Portfolio</title>
 <style>
-:root{--bg:#080808;--panel:#111;--red:#ff3038;--muted:#aaa;--line:#292929;--white:#f5f5f5}
+:root{--bg:#080808;--panel:#111;--red:#ff3038;--accent:#ff3038;--muted:#aaa;--line:#292929;--white:#f5f5f5}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 8%,#39101355,transparent 35%),radial-gradient(ellipse at 90% 45%,#4c080d22,transparent 34%)}
-::selection{background:#ff3038;color:#fff}
-.cursorGlow{position:fixed;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,#ff303810,transparent 68%);transform:translate(-50%,-50%)}
+::selection{background:var(--accent, #ff3038);color:#fff}
+.cursorGlow{position:fixed;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,var(--accent, #ff3038)10,transparent 68%);transform:translate(-50%,-50%)}
 .noise{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 button{font:inherit}
@@ -29,17 +29,17 @@ button{font:inherit}
 .menu{display:none;background:#171717;color:white;border:1px solid #333;border-radius:10px;padding:8px 12px}
 .hero{min-height:690px;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#080808 5%,#080808e8 42%,#08080866 100%),radial-gradient(ellipse at 78% 45%,#a40d1738,transparent 48%),repeating-linear-gradient(135deg,transparent 0 38px,#ffffff04 39px 40px)}
-.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid #ff30382b;border-radius:50%;right:7%;top:17%;box-shadow:0 0 0 35px #ff30380a,0 0 0 80px #ff303806}
+.hero:after{content:"";position:absolute;width:430px;height:430px;border:1px solid var(--accent, #ff3038)2b;border-radius:50%;right:7%;top:17%;box-shadow:0 0 0 35px var(--accent, #ff3038)0a,0 0 0 80px var(--accent, #ff3038)06}
 .heroContent{position:relative;z-index:1;padding:85px 0}
 .kicker{color:var(--red);font-size:.78rem;font-weight:900;letter-spacing:4px;text-transform:uppercase}
 h1{font-size:clamp(3.5rem,11vw,7.8rem);line-height:.92;letter-spacing:-.075em;margin:18px 0;font-weight:1000}
-h1 span{color:var(--red);text-shadow:0 0 35px #ff30382b}
+h1 span{color:var(--red);text-shadow:0 0 35px var(--accent, #ff3038)2b}
 .hero p{max-width:590px;color:#c3c3c3;font-size:1.08rem}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 19px;border-radius:9px;border:1px solid #383838;font-weight:850;transition:.22s;cursor:pointer}
 .btn.primary{background:var(--red);border-color:var(--red);color:white}
 .btn.secondary{background:#121212}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px #ff303822}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px var(--accent, #ff3038)22}
 .heroTags{display:flex;gap:9px;flex-wrap:wrap;margin-top:35px}
 .pill{border:1px solid #343434;background:#101010;padding:7px 11px;border-radius:999px;color:#d7d7d7;font-size:.8rem}
 .pill b{color:var(--red)}
@@ -51,7 +51,7 @@ h2{font-size:clamp(2rem,5vw,3.3rem);line-height:1.05;margin:8px 0 0;letter-spaci
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .card{background:linear-gradient(145deg,#151515,#0d0d0d);border:1px solid #2c2c2c;border-radius:16px;padding:23px;transition:transform .25s,border-color .25s;position:relative;overflow:hidden}
 .card:hover{transform:translateY(-5px);border-color:#a82a30}
-.card:before{content:"";position:absolute;width:120px;height:120px;right:-65px;top:-65px;border-radius:50%;background:#ff303810}
+.card:before{content:"";position:absolute;width:120px;height:120px;right:-65px;top:-65px;border-radius:50%;background:var(--accent, #ff3038)10}
 .card .icon{font-size:1.55rem}
 .card h3{font-size:1.13rem;margin:10px 0 5px}
 .card p{color:#aaa;margin:0;font-size:.92rem}
@@ -59,7 +59,7 @@ h2{font-size:clamp(2rem,5vw,3.3rem);line-height:1.05;margin:8px 0 0;letter-spaci
 .smallLabel{font-size:.7rem;letter-spacing:2px;color:#777;font-weight:900;text-transform:uppercase}
 .profile{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px}
 .profileVisual{min-height:310px;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 45%,#6b111b55,transparent 45%),linear-gradient(145deg,#181818,#0a0a0a);border:1px solid #303030;border-radius:18px;position:relative;overflow:hidden}
-.profileVisual .monogram{font-size:clamp(5rem,14vw,9rem);font-weight:1000;color:#ff3038;letter-spacing:-.1em;text-shadow:0 0 55px #ff303833}
+.profileVisual .monogram{font-size:clamp(5rem,14vw,9rem);font-weight:1000;color:var(--accent, #ff3038);letter-spacing:-.1em;text-shadow:0 0 55px var(--accent, #ff3038)33}
 .profileVisual small{display:block;color:#aaa;letter-spacing:4px;font-weight:800}
 .profileInfo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
 .infoBox{background:#101010;border:1px solid #292929;border-radius:12px;padding:17px}
@@ -83,17 +83,17 @@ footer strong{color:#eee;letter-spacing:2px}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .intro{position:fixed;inset:0;z-index:100;background:#050505;display:grid;place-items:center;text-align:center;padding:25px;overflow:hidden;isolation:isolate;transition:opacity .9s,visibility .9s}
 #introCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
-.intro:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#4d0b1044,transparent 48%),linear-gradient(transparent 49.8%,#ff30380b 50%,transparent 50.2%);z-index:-1}
-.intro:after{content:"";position:absolute;inset:0;border:1px solid #ff30382c;margin:18px;pointer-events:none;box-shadow:inset 0 0 90px #ff18200a}
+.intro:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#4d0b1044,transparent 48%),linear-gradient(transparent 49.8%,var(--accent, #ff3038)0b 50%,transparent 50.2%);z-index:-1}
+.intro:after{content:"";position:absolute;inset:0;border:1px solid var(--accent, #ff3038)2c;margin:18px;pointer-events:none;box-shadow:inset 0 0 90px #ff18200a}
 .intro.hide{opacity:0;visibility:hidden;pointer-events:none}
 .introInner{position:relative;max-width:760px;animation:introFloat 4s ease-in-out infinite}
-.introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1;position:relative;text-shadow:0 0 30px #ff30381c,0 0 90px #ff30381c;animation:logoReveal 1.2s cubic-bezier(.16,1,.3,1) both}
-.introLogo:after{content:"CALVORN";position:absolute;inset:0;color:#ff3038;opacity:.3;filter:blur(15px);z-index:-1}
-.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px #ff3038;animation:lineExpand 1.3s .2s both}
+.introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1;position:relative;text-shadow:0 0 30px var(--accent, #ff3038)1c,0 0 90px var(--accent, #ff3038)1c;animation:logoReveal 1.2s cubic-bezier(.16,1,.3,1) both}
+.introLogo:after{content:"CALVORN";position:absolute;inset:0;color:var(--accent, #ff3038);opacity:.3;filter:blur(15px);z-index:-1}
+.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px var(--accent, #ff3038);animation:lineExpand 1.3s .2s both}
 .intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
 .intro .kicker{animation:fadeUp .9s .1s both}
 .intro p{animation:fadeUp .9s .3s both}
-#enterBtn{position:relative;overflow:hidden;animation:fadeUp .9s .45s both;box-shadow:0 0 30px #ff30381a}
+#enterBtn{position:relative;overflow:hidden;animation:fadeUp .9s .45s both;box-shadow:0 0 30px var(--accent, #ff3038)1a}
 #enterBtn:before{content:"";position:absolute;top:-50%;left:-70%;width:40%;height:200%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,#ffffff65,transparent);animation:buttonShine 3.5s 1.2s infinite}
 .intro.exiting .introInner{animation:portalZoom .8s cubic-bezier(.7,0,.84,0) forwards}
 .intro.exiting:before{animation:shockFlash .8s ease forwards}
@@ -103,14 +103,14 @@ footer strong{color:#eee;letter-spacing:2px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes buttonShine{0%,65%{left:-70%}100%{left:140%}}
 @keyframes portalZoom{to{transform:scale(1.18);filter:blur(8px);opacity:0}}
-@keyframes shockFlash{0%{opacity:1}35%{opacity:1;background:radial-gradient(circle at center,#ff303855,transparent 55%)}100%{opacity:0}}
+@keyframes shockFlash{0%{opacity:1}35%{opacity:1;background:radial-gradient(circle at center,var(--accent, #ff3038)55,transparent 55%)}100%{opacity:0}}
 .heroContent{animation:heroArrival 1s .1s both}
 @keyframes heroArrival{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .intro.hide{opacity:0;visibility:hidden;pointer-events:none}
 .introInner{max-width:700px}
 .introLogo{font-size:clamp(3.5rem,13vw,8rem);font-weight:1000;letter-spacing:-.08em;line-height:1}
 .introLogo span{color:var(--red)}
-.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px #ff3038}
+.introLine{width:110px;height:3px;background:var(--red);margin:24px auto;box-shadow:0 0 22px var(--accent, #ff3038)}
 .intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
 @media(max-width:760px){.cursorGlow{display:none}.navinner{min-height:62px}.menu{display:block}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:#090909;padding:18px 4%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{min-height:620px}.heroContent{padding:75px 0}.grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.profileVisual{min-height:230px}.statgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:65px 0}.sectionHead{display:block}.banner{align-items:flex-start;flex-direction:column}.timelineItem{grid-template-columns:1fr;gap:5px}.socialCard{flex-wrap:wrap}.socialCard .btn{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}#introCanvas{display:none}}
@@ -142,7 +142,7 @@ section{scroll-margin-top:82px}
   to{opacity:1;transform:translateY(0);filter:blur(0)}
 }
 .hero h1 span{
-  background:linear-gradient(100deg,#ff3038 10%,#ff8a8f 45%,#ff3038 80%);
+  background:linear-gradient(100deg,var(--accent, #ff3038) 10%,#ff8a8f 45%,var(--accent, #ff3038) 80%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
@@ -158,7 +158,7 @@ section{scroll-margin-top:82px}
   width:54px;
   margin-top:14px;
   background:var(--red);
-  box-shadow:0 0 16px #ff303855;
+  box-shadow:0 0 16px var(--accent, #ff3038)55;
 }
 .card{isolation:isolate}
 .card:after{
@@ -167,7 +167,7 @@ section{scroll-margin-top:82px}
   inset:0;
   z-index:-1;
   opacity:0;
-  background:linear-gradient(125deg,#ff30380c,transparent 45%);
+  background:linear-gradient(125deg,var(--accent, #ff3038)0c,transparent 45%);
   transition:opacity .3s ease;
 }
 .card:hover:after{opacity:1}
@@ -193,7 +193,7 @@ section{scroll-margin-top:82px}
   border:1px solid #303030;
   border-radius:14px;
   padding:22px 12px;
-  background:radial-gradient(circle at 50% 0,#ff303815,transparent 55%),#101010;
+  background:radial-gradient(circle at 50% 0,var(--accent, #ff3038)15,transparent 55%),#101010;
 }
 .loadoutItem .loadoutIcon{font-size:2rem;display:block;margin-bottom:10px}
 .loadoutItem strong{display:block;font-size:.98rem}
@@ -240,7 +240,7 @@ section{scroll-margin-top:82px}
   padding:clamp(25px,5vw,48px);
   border:1px solid #512126;
   border-radius:20px;
-  background:radial-gradient(ellipse at 85% 20%,#ff303817,transparent 40%),linear-gradient(125deg,#1a090b,#101010 65%);
+  background:radial-gradient(ellipse at 85% 20%,var(--accent, #ff3038)17,transparent 40%),linear-gradient(125deg,#1a090b,#101010 65%);
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -313,6 +313,49 @@ section{scroll-margin-top:82px}
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+
+/* Best friends section */
+.friendsGrid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.friendCard{position:relative;overflow:hidden;min-height:300px;padding:24px;isolation:isolate}
+.friendCard:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,48,56,.16),transparent 42%);z-index:-1;pointer-events:none}
+.friendTop{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.friendRank{font-family:var(--display,inherit);font-size:2rem;font-weight:900;color:rgba(255,48,56,.9);letter-spacing:-.06em}
+.friendTag{font-size:.65rem;letter-spacing:.15em;color:#ff7b80;border:1px solid rgba(255,48,56,.35);padding:6px 9px;border-radius:999px}
+.friendAvatar{display:grid;place-items:center;width:66px;height:66px;margin:24px 0 18px;border:1px solid rgba(255,48,56,.65);border-radius:18px;background:linear-gradient(145deg,#351014,#100b0c);box-shadow:0 0 28px rgba(255,48,56,.15);font-size:1.45rem;font-weight:900;color:#fff}
+.friendCard h3{font-size:1.45rem;margin:0 0 8px;letter-spacing:.04em}
+.friendCard p{color:var(--muted,#aaa);line-height:1.7;margin:0}
+.friendLine{display:flex;align-items:center;gap:10px;margin-top:22px}
+.friendLine span{height:2px;width:34px;background:var(--accent, #ff3038);box-shadow:0 0 12px var(--accent, #ff3038)}
+.friendLine small{font-size:.62rem;letter-spacing:.16em;color:#aaa}
+@media(max-width:760px){.friendsGrid{grid-template-columns:1fr}.friendCard{min-height:260px}.friendAvatar{margin-top:18px}}
+
+
+/* Custom theme picker */
+.themeDock{position:fixed;right:18px;bottom:82px;z-index:50;font-family:inherit}
+.themeToggle{display:flex;align-items:center;gap:8px;background:#111;color:#fff;border:1px solid var(--accent);border-radius:999px;padding:11px 15px;font-size:.72rem;font-weight:900;letter-spacing:.12em;cursor:pointer;box-shadow:0 0 22px color-mix(in srgb,var(--accent) 24%,transparent);transition:transform .2s,box-shadow .2s}
+.themeToggle:hover{transform:translateY(-3px);box-shadow:0 0 30px color-mix(in srgb,var(--accent) 38%,transparent)}
+.themeToggle:first-letter{color:var(--accent)}
+.themePanel{position:absolute;right:0;bottom:55px;width:min(330px,calc(100vw - 28px));padding:18px;background:rgba(12,12,12,.97);border:1px solid color-mix(in srgb,var(--accent) 65%,#333);border-radius:18px;box-shadow:0 18px 70px #000b,0 0 28px color-mix(in srgb,var(--accent) 15%,transparent);backdrop-filter:blur(18px);animation:themePop .22s ease-out}
+.themePanel[hidden]{display:none}
+@keyframes themePop{from{opacity:0;transform:translateY(9px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.themePanelHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.themePanelHead strong{display:block;color:var(--accent);font-size:.78rem;letter-spacing:.2em}
+.themePanelHead small{display:block;color:#999;margin-top:3px}
+.themeClose{background:#202020;border:1px solid #383838;color:#fff;border-radius:8px;width:31px;height:31px;font-size:1.2rem;cursor:pointer}
+.colorLabel,.presetLabel{display:block;color:#ddd;font-size:.77rem;font-weight:800;margin-bottom:8px}
+.colorInputRow{display:flex;align-items:center;gap:12px;padding:9px 11px;background:#171717;border:1px solid #303030;border-radius:11px;margin-bottom:17px}
+#accentPicker{width:42px;height:35px;border:0;background:none;padding:0;cursor:pointer}
+#accentHex{font:800 .82rem ui-monospace,monospace;letter-spacing:.08em;color:#fff}
+.presetLabel{color:#888;font-size:.63rem;letter-spacing:.16em}
+.themePresets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.themePresets button{display:flex;align-items:center;gap:7px;padding:9px 8px;background:#171717;color:#ddd;border:1px solid #303030;border-radius:9px;font-size:.76rem;cursor:pointer}
+.themePresets button:hover,.themePresets button.active{border-color:var(--accent);color:#fff;box-shadow:0 0 13px color-mix(in srgb,var(--accent) 18%,transparent)}
+.themePresets i{display:block;width:12px;height:12px;border-radius:50%;box-shadow:0 0 9px currentColor}
+.themeActions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:16px}
+#resetTheme{background:transparent;color:var(--accent);border:1px solid #393939;border-radius:8px;padding:8px 10px;font-size:.75rem;font-weight:800;cursor:pointer}
+.themeActions span{color:#777;font-size:.63rem}
+@media(max-width:520px){.themeDock{right:12px;bottom:68px}.themeToggle{padding:10px 12px}.themePanel{bottom:51px}}
+
 </style>
 </head>
 <body>
@@ -325,7 +368,7 @@ section{scroll-margin-top:82px}
     <div class="introLogo">CAL<span>VORN</span></div>
     <div class="introLine"></div>
     <p>Precision · Practice · PvP</p>
-    <div style="color:#777;font-size:.68rem;letter-spacing:2px;margin:0 0 18px">INITIALIZING PLAYER PROFILE <span style="color:#ff3038">// 001</span></div>
+    <div style="color:#777;font-size:.68rem;letter-spacing:2px;margin:0 0 18px">INITIALIZING PLAYER PROFILE <span style="color:var(--accent, #ff3038)">// 001</span></div>
     <button class="btn primary" id="enterBtn">EXPLORE MY WORLD ↗</button>
   </div>
 </div>
@@ -385,6 +428,14 @@ section{scroll-margin-top:82px}
     <div class="card socialCard reveal"><div class="socialIcon">D</div><div><div class="smallLabel">Discord username</div><h3>_nyxargaming</h3><p>Connect with me on Discord.</p></div></div>
     <div class="card socialCard reveal"><div class="socialIcon">MC</div><div><div class="smallLabel">Minecraft</div><h3>itz_calvorn</h3><p>Find me in the blocky world.</p></div></div>
     <div class="card socialCard reveal"><div class="socialIcon">▶</div><div><div class="smallLabel">Video content</div><h3>YouTube</h3><p>Add your channel link here later.</p></div></div>
+  </div>
+</div></section>
+<section class="section" id="friends"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">06 / The inner circle</div><h2>BEST FRIENDS.</h2><p class="lead">Real ones in the journey. Respect to my best friends and the memories we share.</p></div></div>
+  <div class="grid friendsGrid">
+    <article class="card friendCard reveal"><div class="friendTop"><span class="friendRank">01</span><span class="friendTag">BEST FRIEND</span></div><div class="friendAvatar">S</div><h3>SATYAM</h3><p>Part of the inner circle. Always respect, always good vibes.</p><div class="friendLine"><span></span><small>CALVORN'S CIRCLE</small></div></article>
+    <article class="card friendCard reveal"><div class="friendTop"><span class="friendRank">02</span><span class="friendTag">BEST FRIEND</span></div><div class="friendAvatar">S</div><h3>SALLU</h3><p>A trusted friend on the journey. Good memories, real friendship.</p><div class="friendLine"><span></span><small>CALVORN'S CIRCLE</small></div></article>
+    <article class="card friendCard reveal"><div class="friendTop"><span class="friendRank">03</span><span class="friendTag">BEST FRIEND</span></div><div class="friendAvatar">MG</div><h3>MG</h3><p>One of the real ones. Respect and support all the way.</p><div class="friendLine"><span></span><small>CALVORN'S CIRCLE</small></div></article>
   </div>
 </div></section>
 <section class="section" id="ownz"><div class="wrap">
@@ -500,7 +551,7 @@ const enterBtn=document.getElementById('enterBtn');
 enterBtn.addEventListener('click',()=>{intro.classList.add('exiting');document.body.classList.add('entered');setTimeout(()=>intro.classList.add('hide'),680);try{sessionStorage.setItem('calvornEntered','yes')}catch(e){}});
 try{if(sessionStorage.getItem('calvornEntered')==='yes')intro.classList.add('hide')}catch(e){}
 // Lightweight cinematic particle field; no external libraries or assets required.
-(()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,48,56,${p.a})`;ctx.shadowBlur=10;ctx.shadowColor='#ff3038';ctx.fill()}ctx.shadowBlur=0;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
+(()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,48,56,${p.a})`;ctx.shadowBlur=10;ctx.shadowColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fill()}ctx.shadowBlur=0;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
 const glow=document.getElementById('cursorGlow');window.addEventListener('pointermove',e=>{if(glow&&e.pointerType!=='touch'){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
 document.getElementById('year').textContent=new Date().getFullYear();
 const menuBtn=document.getElementById('menuBtn'),navlinks=document.getElementById('navlinks');
@@ -538,6 +589,63 @@ window.addEventListener('scroll',updateBackTop,{passive:true});
 updateBackTop();
 if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
+
+// User-customizable accent theme: picker, presets, and device persistence.
+(function(){
+  const root=document.documentElement;
+  const picker=document.getElementById('accentPicker');
+  const hex=document.getElementById('accentHex');
+  const panel=document.getElementById('themePanel');
+  const toggle=document.getElementById('themeToggle');
+  const close=document.getElementById('themeClose');
+  const presets=[...document.querySelectorAll('.themePresets [data-color]')];
+  const reset=document.getElementById('resetTheme');
+  const defaultColor='#ff3038';
+  function applyColor(value,save=true){
+    if(!/^#[0-9a-fA-F]{6}$/.test(value)) return;
+    const color=value.toLowerCase();
+    root.style.setProperty('--accent',color);
+    root.style.setProperty('--red',color);
+    if(picker) picker.value=color;
+    if(hex) hex.textContent=color.toUpperCase();
+    presets.forEach(btn=>btn.classList.toggle('active',btn.dataset.color.toLowerCase()===color));
+    // Update the intro canvas glow if it is present.
+    if(save){try{localStorage.setItem('calvorn-accent-color',color)}catch(e){}}
+  }
+  try{applyColor(localStorage.getItem('calvorn-accent-color')||defaultColor,false)}catch(e){applyColor(defaultColor,false)}
+  picker?.addEventListener('input',()=>applyColor(picker.value));
+  presets.forEach(btn=>btn.addEventListener('click',()=>applyColor(btn.dataset.color)));
+  reset?.addEventListener('click',()=>applyColor(defaultColor));
+  toggle?.addEventListener('click',()=>{
+    const opening=panel.hidden;
+    panel.hidden=!opening;
+    toggle.setAttribute('aria-expanded',String(opening));
+  });
+  close?.addEventListener('click',()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false')});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel&&!panel.hidden){panel.hidden=true;toggle.setAttribute('aria-expanded','false')}});
+})();
+
 </script>
+
+<!-- Custom accent color picker -->
+<div class="themeDock" id="themeDock">
+  <button class="themeToggle" id="themeToggle" aria-expanded="false" aria-controls="themePanel" aria-label="Customize website colors">✦ <span>COLORS</span></button>
+  <div class="themePanel" id="themePanel" hidden>
+    <div class="themePanelHead"><div><strong>THEME LAB</strong><small>Make CALVORN yours</small></div><button class="themeClose" id="themeClose" aria-label="Close color settings">×</button></div>
+    <label class="colorLabel" for="accentPicker">Choose any color</label>
+    <div class="colorInputRow"><input id="accentPicker" type="color" value="#ff3038" aria-label="Choose accent color"><span id="accentHex">#FF3038</span></div>
+    <div class="presetLabel">QUICK PRESETS</div>
+    <div class="themePresets">
+      <button type="button" data-color="#ff3038"><i style="background:#ff3038"></i>Red</button>
+      <button type="button" data-color="#a855f7"><i style="background:#a855f7"></i>Purple</button>
+      <button type="button" data-color="#38bdf8"><i style="background:#38bdf8"></i>Blue</button>
+      <button type="button" data-color="#fbbf24"><i style="background:#fbbf24"></i>Gold</button>
+      <button type="button" data-color="#4ade80"><i style="background:#4ade80"></i>Green</button>
+      <button type="button" data-color="#f472b6"><i style="background:#f472b6"></i>Pink</button>
+    </div>
+    <div class="themeActions"><button id="resetTheme" type="button">Reset red</button><span>Saved on this device</span></div>
+  </div>
+</div>
+
 </body>
-                           </html>
+                                                                                              </html>
