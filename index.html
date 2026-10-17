@@ -356,6 +356,46 @@ section{scroll-margin-top:82px}
 .themeActions span{color:#777;font-size:.63rem}
 @media(max-width:520px){.themeDock{right:12px;bottom:68px}.themeToggle{padding:10px 12px}.themePanel{bottom:51px}}
 
+
+/* Netherite portal intro */
+.intro{isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 48%,#301016 0%,#10090c 42%,#050505 78%)}
+.portalScene{position:relative;z-index:2;min-height:100svh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 18px 28px}
+.portalCaption{font-size:.65rem;letter-spacing:.34em;color:#c7a6a8;margin-bottom:15px}
+.netherPortal{position:relative;width:min(48vw,300px);height:min(58vw,365px);min-width:205px;min-height:255px;display:grid;place-items:center;filter:drop-shadow(0 0 18px color-mix(in srgb,var(--accent) 40%,transparent));animation:portalFloat 4s ease-in-out infinite}
+.portalOuter{position:absolute;inset:0;border:12px solid #29252b;border-radius:7px;background:linear-gradient(135deg,#69616a,#211d25 27%,#51454c 48%,#19171c 70%,#66545a);box-shadow:inset 0 0 0 3px #0c0b0e,0 0 0 2px #080808,0 0 28px #000}
+.portalInner{position:absolute;inset:13px;background:#160b18;overflow:hidden;border:3px solid #0d0a10;box-shadow:inset 0 0 25px var(--accent),0 0 18px var(--accent)}
+.portalEnergy{position:absolute;inset:-35%;background:repeating-linear-gradient(115deg,transparent 0 12px,color-mix(in srgb,var(--accent) 25%,transparent) 13px 17px,transparent 18px 31px),radial-gradient(ellipse at 30% 25%,color-mix(in srgb,var(--accent) 95%,white) 0%,var(--accent) 18%,#4c124f 48%,#09080f 78%);background-size:180% 180%;animation:portalFlow 3s linear infinite,portalPulse 2s ease-in-out infinite alternate;filter:saturate(1.25)}
+.portalInner:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 20%,#fff2 42%,transparent 58%);transform:translateX(-120%);animation:portalShine 3.5s ease-in-out infinite}
+.portalRunes{position:absolute;z-index:1;inset:0;display:grid;place-items:center;color:#fff9;font-size:clamp(1rem,4vw,1.5rem);letter-spacing:.12em;text-shadow:0 0 12px var(--accent);writing-mode:vertical-rl;opacity:.62}
+.portalBase{position:absolute;bottom:-13px;width:120%;height:15px;background:linear-gradient(#5c5056,#171419);border:2px solid #332a31;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%)}
+.portalParticles{position:absolute;inset:-16px;pointer-events:none}
+.portalParticles i{position:absolute;width:4px;height:4px;background:var(--accent);box-shadow:0 0 12px var(--accent);border-radius:50%;animation:portalSpark 2.6s ease-in-out infinite}
+.portalParticles i:nth-child(1){left:4%;top:30%}.portalParticles i:nth-child(2){right:3%;top:18%;animation-delay:.4s}.portalParticles i:nth-child(3){left:20%;bottom:7%;animation-delay:.8s}.portalParticles i:nth-child(4){right:18%;bottom:2%;animation-delay:1.2s}.portalParticles i:nth-child(5){left:0;top:70%;animation-delay:1.6s}.portalParticles i:nth-child(6){right:0;top:52%;animation-delay:.2s}.portalParticles i:nth-child(7){left:40%;top:0;animation-delay:1s}.portalParticles i:nth-child(8){right:30%;bottom:0;animation-delay:1.8s}
+.portalTitle{font-size:clamp(1.5rem,5vw,2.8rem);font-weight:1000;letter-spacing:.1em;margin-top:27px;text-shadow:0 0 25px #000}
+.portalTitle span{color:var(--accent)}
+.portalSub{font-size:.65rem;letter-spacing:.16em;color:#a99b9f;margin:5px 0 23px}
+.portalEnter{position:relative;overflow:hidden;min-width:230px;justify-content:center;gap:13px;box-shadow:0 0 25px color-mix(in srgb,var(--accent) 28%,transparent)}
+.portalEnter:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,#fff5 48%,transparent 70%);transform:translateX(-120%);animation:portalShine 3s ease-in-out infinite}
+.portalBtnIcon{font-size:1rem}
+.portalLoading{display:none;align-items:center;flex-direction:column;gap:10px;width:min(260px,80vw);margin-top:18px;color:#d8c4c8;font-size:.61rem;letter-spacing:.22em}
+.portalLoading.active{display:flex}
+.loadingBar{width:100%;height:3px;background:#30262c;overflow:hidden;border-radius:5px}
+.loadingBar i{display:block;width:35%;height:100%;background:var(--accent);box-shadow:0 0 12px var(--accent);animation:loadPortal 1.05s ease-in-out infinite}
+.portalFoot{position:absolute;bottom:18px;font-size:.55rem;letter-spacing:.19em;color:#665d61}
+.portalFoot span{color:var(--accent);padding:0 7px}
+.intro.exiting .portalScene{animation:portalEnterScene .72s cubic-bezier(.2,.8,.2,1) forwards}
+.intro.exiting .netherPortal{animation:portalZoom .72s ease-in forwards}
+@keyframes portalFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes portalFlow{0%{background-position:0% 0%}100%{background-position:180% 180%}}
+@keyframes portalPulse{from{filter:brightness(.78)}to{filter:brightness(1.3)}}
+@keyframes portalShine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+@keyframes portalSpark{0%,100%{transform:translateY(9px) scale(.6);opacity:.2}50%{transform:translateY(-12px) scale(1.4);opacity:1}}
+@keyframes loadPortal{0%{transform:translateX(-120%)}100%{transform:translateX(340%)}}
+@keyframes portalEnterScene{to{opacity:0;transform:scale(1.12);filter:blur(8px)}}
+@keyframes portalZoom{to{transform:scale(2.2);filter:brightness(2.4)}}
+@media(max-width:520px){.portalCaption{font-size:.55rem;letter-spacing:.2em}.netherPortal{width:220px;height:275px}.portalTitle{letter-spacing:.06em}.portalSub{max-width:290px;line-height:1.8}.portalFoot{font-size:.48rem;letter-spacing:.1em}}
+@media(prefers-reduced-motion:reduce){.netherPortal,.portalEnergy,.portalInner:after,.portalParticles i,.portalEnter:before,.loadingBar i{animation-duration:8s!important}}
+
 </style>
 </head>
 <body>
@@ -363,13 +403,18 @@ section{scroll-margin-top:82px}
 <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
 <div class="intro" id="intro">
   <canvas id="introCanvas" aria-hidden="true"></canvas>
-  <div class="introInner">
-    <div class="kicker">Minecraft PvP Portfolio</div>
-    <div class="introLogo">CAL<span>VORN</span></div>
-    <div class="introLine"></div>
-    <p>Precision · Practice · PvP</p>
-    <div style="color:#777;font-size:.68rem;letter-spacing:2px;margin:0 0 18px">INITIALIZING PLAYER PROFILE <span style="color:var(--accent, #ff3038)">// 001</span></div>
-    <button class="btn primary" id="enterBtn">EXPLORE MY WORLD ↗</button>
+  <div class="portalScene">
+    <div class="portalCaption">DIMENSION GATE // CALVORN NETWORK</div>
+    <div class="netherPortal" aria-hidden="true">
+      <div class="portalOuter"><div class="portalInner"><div class="portalEnergy"></div><div class="portalRunes">ᚲ　ᚨ　ᛚ　ᚡ　ᛟ　ᚱ　ᚾ</div></div></div>
+      <div class="portalBase"></div>
+      <div class="portalParticles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="portalTitle">CAL<span>VORN</span> WORLD</div>
+    <p class="portalSub">A NEW WORLD IS WAITING BEYOND THE PORTAL</p>
+    <button class="btn primary portalEnter" id="enterBtn"><span class="portalBtnIcon">✦</span> ENTER CALVORN WORLD <span>↗</span></button>
+    <div class="portalLoading" id="portalLoading" aria-live="polite"><span class="loadingBar"><i></i></span><span id="loadingText">OPENING DIMENSION...</span></div>
+    <div class="portalFoot">MINECRAFT PVP PORTFOLIO <span>•</span> PLAYER 001</div>
   </div>
 </div>
 <header class="nav">
@@ -545,13 +590,51 @@ section{scroll-margin-top:82px}
 <button class="backTop" id="backTop" aria-label="Back to top">↑</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <footer><div class="wrap footerInner"><div><strong>CALVORN</strong><div>Built around the player. Driven by PvP.</div></div><div>© <span id="year"></span> CALVORN · Nirob</div></div></footer>
+
+
+<!-- Custom accent color picker -->
+<div class="themeDock" id="themeDock">
+  <button class="themeToggle" id="themeToggle" aria-expanded="false" aria-controls="themePanel" aria-label="Customize website colors">✦ <span>COLORS</span></button>
+  <div class="themePanel" id="themePanel" hidden>
+    <div class="themePanelHead"><div><strong>THEME LAB</strong><small>Make CALVORN yours</small></div><button class="themeClose" id="themeClose" aria-label="Close color settings">×</button></div>
+    <label class="colorLabel" for="accentPicker">Choose any color</label>
+    <div class="colorInputRow"><input id="accentPicker" type="color" value="#ff3038" aria-label="Choose accent color"><span id="accentHex">#FF3038</span></div>
+    <div class="presetLabel">QUICK PRESETS</div>
+    <div class="themePresets">
+      <button type="button" data-color="#ff3038"><i style="background:#ff3038"></i>Red</button>
+      <button type="button" data-color="#a855f7"><i style="background:#a855f7"></i>Purple</button>
+      <button type="button" data-color="#38bdf8"><i style="background:#38bdf8"></i>Blue</button>
+      <button type="button" data-color="#fbbf24"><i style="background:#fbbf24"></i>Gold</button>
+      <button type="button" data-color="#4ade80"><i style="background:#4ade80"></i>Green</button>
+      <button type="button" data-color="#f472b6"><i style="background:#f472b6"></i>Pink</button>
+      <button type="button" data-color="#ffffff"><i style="background:#ffffff"></i>White</button>
+      <button type="button" data-color="#00e5ff"><i style="background:#00e5ff"></i>Cyan</button>
+      <button type="button" data-color="#ff7a00"><i style="background:#ff7a00"></i>Orange</button>
+      <button type="button" data-color="#39ff14"><i style="background:#39ff14"></i>Lime</button>
+      <button type="button" data-color="#ff3038"><i style="background:#ff3038"></i>Red</button>
+    </div>
+    <div class="themeActions"><button id="resetTheme" type="button">Reset red</button><span>Saved on this device</span></div>
+  </div>
+</div>
+
 <script>
 const intro=document.getElementById('intro');
 const enterBtn=document.getElementById('enterBtn');
-enterBtn.addEventListener('click',()=>{intro.classList.add('exiting');document.body.classList.add('entered');setTimeout(()=>intro.classList.add('hide'),680);try{sessionStorage.setItem('calvornEntered','yes')}catch(e){}});
-try{if(sessionStorage.getItem('calvornEntered')==='yes')intro.classList.add('hide')}catch(e){}
+const portalLoading=document.getElementById('portalLoading');
+const loadingText=document.getElementById('loadingText');
+enterBtn.addEventListener('click',()=>{
+  if(enterBtn.disabled)return;
+  enterBtn.disabled=true;
+  enterBtn.style.opacity='.7';
+  portalLoading.classList.add('active');
+  loadingText.textContent='OPENING DIMENSION...';
+  intro.classList.add('exiting');
+  document.body.classList.add('entered');
+  setTimeout(()=>{loadingText.textContent='WELCOME TO CALVORN WORLD';},420);
+  setTimeout(()=>intro.classList.add('hide'),1050);
+});
 // Lightweight cinematic particle field; no external libraries or assets required.
-(()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,48,56,${p.a})`;ctx.shadowBlur=10;ctx.shadowColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fill()}ctx.shadowBlur=0;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
+(()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fillStyle=accent;ctx.globalAlpha=p.a;ctx.shadowBlur=10;ctx.shadowColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fill()}ctx.shadowBlur=0;ctx.globalAlpha=1;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
 const glow=document.getElementById('cursorGlow');window.addEventListener('pointermove',e=>{if(glow&&e.pointerType!=='touch'){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
 document.getElementById('year').textContent=new Date().getFullYear();
 const menuBtn=document.getElementById('menuBtn'),navlinks=document.getElementById('navlinks');
@@ -626,26 +709,5 @@ if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:
 })();
 
 </script>
-
-<!-- Custom accent color picker -->
-<div class="themeDock" id="themeDock">
-  <button class="themeToggle" id="themeToggle" aria-expanded="false" aria-controls="themePanel" aria-label="Customize website colors">✦ <span>COLORS</span></button>
-  <div class="themePanel" id="themePanel" hidden>
-    <div class="themePanelHead"><div><strong>THEME LAB</strong><small>Make CALVORN yours</small></div><button class="themeClose" id="themeClose" aria-label="Close color settings">×</button></div>
-    <label class="colorLabel" for="accentPicker">Choose any color</label>
-    <div class="colorInputRow"><input id="accentPicker" type="color" value="#ff3038" aria-label="Choose accent color"><span id="accentHex">#FF3038</span></div>
-    <div class="presetLabel">QUICK PRESETS</div>
-    <div class="themePresets">
-      <button type="button" data-color="#ff3038"><i style="background:#ff3038"></i>Red</button>
-      <button type="button" data-color="#a855f7"><i style="background:#a855f7"></i>Purple</button>
-      <button type="button" data-color="#38bdf8"><i style="background:#38bdf8"></i>Blue</button>
-      <button type="button" data-color="#fbbf24"><i style="background:#fbbf24"></i>Gold</button>
-      <button type="button" data-color="#4ade80"><i style="background:#4ade80"></i>Green</button>
-      <button type="button" data-color="#f472b6"><i style="background:#f472b6"></i>Pink</button>
-    </div>
-    <div class="themeActions"><button id="resetTheme" type="button">Reset red</button><span>Saved on this device</span></div>
-  </div>
-</div>
-
 </body>
-                                                                                              </html>
+  </html>
