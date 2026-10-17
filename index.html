@@ -429,6 +429,27 @@ section{scroll-margin-top:82px}
 body.secretOpen{overflow:hidden}
 @media(max-width:650px){.secretBox{align-items:flex-start;flex-direction:column;padding:24px}.timeItem{grid-template-columns:1fr}.timeStatus{width:max-content}.terminalBody{padding:16px;font-size:.75rem}.clipArt{height:130px}}
 
+
+/* CALVORN GOD MODE additions */
+.godMode{background:linear-gradient(180deg,#090909,#10090a 50%,#080808);border-top:1px solid #291416;border-bottom:1px solid #291416}
+.godMode h2 span{color:var(--accent)}.godGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.godCard{position:relative;min-width:0;padding:22px;border:1px solid #302326;border-radius:18px;background:linear-gradient(145deg,#151112,#0b0b0b);overflow:hidden}
+.godCard:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.godLabel{font-size:.62rem;letter-spacing:.17em;color:var(--accent);font-weight:900;margin-bottom:13px}.godCard h3{margin:10px 0;font-size:1.05rem}.godCard p{font-size:.83rem;color:#aaa}
+.skinStage{width:100%;height:240px;position:relative;border:1px solid #34242a;border-radius:13px;background:radial-gradient(ellipse at 50% 55%,color-mix(in srgb,var(--accent) 23%,transparent),transparent 58%),linear-gradient(145deg,#171217,#090909);display:grid;place-items:center;cursor:pointer;overflow:hidden}
+.skinModel{position:relative;width:92px;height:174px;transform-style:preserve-3d;transform:rotateY(-25deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 12px color-mix(in srgb,var(--accent) 45%,transparent))}
+.skinHead{position:absolute;top:0;left:29px;width:36px;height:36px;background:linear-gradient(135deg,#b98667,#704735);border:3px solid #33241f;box-shadow:inset -8px -4px #422d2a}
+.skinHead:before{content:"";position:absolute;top:12px;left:5px;width:6px;height:4px;background:#f7f7f7;box-shadow:15px 0 #f7f7f7}.skinHead:after{content:"";position:absolute;top:13px;left:7px;width:3px;height:3px;background:#141414;box-shadow:15px 0 #141414}
+.skinBody{position:absolute;top:38px;left:22px;width:50px;height:58px;background:linear-gradient(90deg,#17171d,#36333d 45%,#111);border:3px solid #51414a;box-shadow:inset 0 0 0 5px color-mix(in srgb,var(--accent) 40%,#171717)}
+.skinArm{position:absolute;top:40px;width:18px;height:57px;background:linear-gradient(90deg,#24212a,#62535d);border:3px solid #51414a}.skinArm.left{left:2px;transform:rotate(8deg)}.skinArm.right{right:0;transform:rotate(-8deg)}
+.skinLeg{position:absolute;top:98px;width:23px;height:66px;background:linear-gradient(90deg,#17171d,#34313b);border:3px solid #51414a}.skinLeg.left{left:21px}.skinLeg.right{left:48px}
+.skinShadow{position:absolute;bottom:28px;width:90px;height:12px;border-radius:50%;background:var(--accent);filter:blur(18px);opacity:.25}.rotateHint{position:absolute;bottom:10px;left:0;right:0;font-size:.58rem;letter-spacing:.15em;color:#aaa}
+.arenaChoices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}.arenaChoice{display:flex;align-items:center;gap:8px;text-align:left;padding:12px 10px;border-radius:10px;background:#111;border:1px solid #30272a;color:#ddd;cursor:pointer}.arenaChoice span{font-size:.78rem}.arenaChoice.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,#111);box-shadow:0 0 18px color-mix(in srgb,var(--accent) 12%,transparent)}
+.arenaResult{padding:14px;border:1px solid #34242a;border-radius:12px;background:#090909;margin-bottom:14px}.arenaResult span{display:block;font-size:.58rem;letter-spacing:.16em;color:#888}.arenaResult strong{display:block;font-size:1.1rem;color:var(--accent);margin-top:5px}.arenaResult p{margin:2px 0 0;font-size:.75rem}
+.vaultSymbol{width:58px;height:58px;border:1px solid var(--accent);border-radius:16px;display:grid;place-items:center;font-size:2rem;color:var(--accent);box-shadow:0 0 28px color-mix(in srgb,var(--accent) 16%,transparent);margin:20px 0}.vaultForm{display:flex;gap:7px;flex-wrap:wrap;margin-top:16px}.vaultForm input{min-width:0;flex:1;width:100%;padding:12px;border-radius:9px;background:#070707;border:1px solid #3a2b2e;color:#fff;outline:none}.vaultForm input:focus{border-color:var(--accent)}.vaultForm .btn{padding:10px 14px}.vaultOutput{margin-top:13px;min-height:38px;padding:10px;border:1px dashed #39282d;border-radius:9px;color:#aaa;font: .72rem ui-monospace,monospace;overflow-wrap:anywhere}.vaultOutput.unlocked{color:var(--accent);border-style:solid;background:color-mix(in srgb,var(--accent) 8%,#080808)}
+@media(max-width:850px){.godGrid{grid-template-columns:1fr 1fr}.vaultCard{grid-column:1/-1}}
+@media(max-width:560px){.godGrid{grid-template-columns:1fr}.vaultCard{grid-column:auto}.godCard{padding:18px}}
+
 </style>
 </head>
 <body>
@@ -445,7 +466,7 @@ body.secretOpen{overflow:hidden}
     </div>
     <div class="portalTitle">CAL<span>VORN</span> WORLD</div>
     <p class="portalSub">A NEW WORLD IS WAITING BEYOND THE PORTAL</p>
-    <button class="btn primary portalEnter" id="enterBtn"><span class="portalBtnIcon">✦</span> ENTER CALVORN WORLD <span>↗</span></button>
+    <button type="button" class="btn primary portalEnter" id="enterBtn" onclick="document.getElementById(\'intro\').style.display=\'none\';document.getElementById(\'intro\').classList.add(\'hide\');document.body.style.overflow=\'auto\';document.documentElement.style.overflow=\'auto\';return false;"><span class="portalBtnIcon">✦</span> ENTER CALVORN WORLD <span>↗</span></button>
     <div class="portalLoading" id="portalLoading" aria-live="polite"><span class="loadingBar"><i></i></span><span id="loadingText">OPENING DIMENSION...</span></div>
     <div class="portalFoot">MINECRAFT PVP PORTFOLIO <span>•</span> PLAYER 001</div>
   </div>
@@ -455,7 +476,7 @@ body.secretOpen{overflow:hidden}
     <a class="brand" href="#home">CAL<span>VORN</span></a>
     <button class="menu" id="menuBtn" aria-label="Open navigation">☰ Menu</button>
     <nav class="navlinks" id="navlinks">
-      <a href="#about">About</a><a href="#pvp">PvP Tiers</a><a href="#stats">Stats</a><a href="#projects">Projects</a><a href="#socials">Socials</a><a href="#friends">Friends</a><a href="#showcase">Showcase</a><a href="#achievements">Achievements</a><a href="#ownz">OWNZ</a>
+      <a href="#about">About</a><a href="#pvp">PvP Tiers</a><a href="#stats">Stats</a><a href="#projects">Projects</a><a href="#socials">Socials</a><a href="#friends">Friends</a><a href="#commandcenter">Calvorn Status</a><a href="#achievements">Achievements</a><a href="#ownz">OWNZ</a>
     </nav>
   </div>
 </header>
@@ -471,7 +492,7 @@ body.secretOpen{overflow:hidden}
   <div class="sectionHead"><div><div class="eyebrow">01 / Player identity</div><h2>MEET NIROB.</h2><p class="lead">The player behind CALVORN. A personal space for my PvP journey, communities, and future achievements.</p></div></div>
   <div class="profile reveal"><div class="profileVisual"><div><div class="monogram">C.</div><small>CALVORN / NIROB</small></div></div>
     <div class="profileInfo">
-      <div class="infoBox"><span>Real Name</span><strong>Nirob</strong></div><div class="infoBox"><span>Minecraft Username</span><strong>itz_calvorn</strong></div>
+      <div class="infoBox"><span>Real Name</span><strong>Nirob</strong></div><div class="infoBox"><span>Minecraft Username</span><strong>Itz_Calvorn1</strong></div>
       <div class="infoBox"><span>Discord</span><strong>_nyxargaming</strong></div><div class="infoBox"><span>Main Focus</span><strong>Crystal PvP</strong></div>
       <div class="infoBox"><span>Playstyle</span><strong>Competitive / Practice</strong></div><div class="infoBox"><span>Theme</span><strong>Black & Red</strong></div>
     </div>
@@ -504,7 +525,7 @@ body.secretOpen{overflow:hidden}
   <div class="sectionHead"><div><div class="eyebrow">05 / Find me online</div><h2>LET'S CONNECT.</h2><p class="lead">Join the community or reach out through my profile links.</p></div></div>
   <div class="grid">
     <div class="card socialCard reveal"><div class="socialIcon">D</div><div><div class="smallLabel">Discord username</div><h3>_nyxargaming</h3><p>Connect with me on Discord.</p></div></div>
-    <div class="card socialCard reveal"><div class="socialIcon">MC</div><div><div class="smallLabel">Minecraft</div><h3>itz_calvorn</h3><p>Find me in the blocky world.</p></div></div>
+    <div class="card socialCard reveal"><div class="socialIcon">MC</div><div><div class="smallLabel">Minecraft</div><h3>Itz_Calvorn1</h3><p>Find me in the blocky world.</p></div></div>
     <div class="card socialCard reveal"><div class="socialIcon">▶</div><div><div class="smallLabel">Video content</div><h3>YouTube</h3><p>Add your channel link here later.</p></div></div>
   </div>
 </div></section>
@@ -589,16 +610,17 @@ body.secretOpen{overflow:hidden}
   <div class="wrap">
     <div class="sectionHead">
       <div>
-        <div class="eyebrow">09 / Quick answers</div>
-        <h2>PLAYER FAQ.</h2>
-        <p class="lead">A few quick details for visitors exploring the CALVORN portfolio.</p>
+        <div class="eyebrow">09 / Frequently asked questions</div>
+        <h2>CALVORN FAQ.</h2>
+        <p class="lead">Everything you need to know about CALVORN, PvP, and connecting with the community.</p>
       </div>
     </div>
     <div class="faqList">
-      <details class="faqItem reveal"><summary>What is CALVORN?</summary><div class="faqAnswer">CALVORN is the personal Minecraft PvP identity and portfolio of Nirob, built to showcase combat focus, progress, and community links.</div></details>
-      <details class="faqItem reveal"><summary>What is the main PvP focus?</summary><div class="faqAnswer">Crystal PvP is listed as the main focus, with Spear PvP and UHC also included in the current profile.</div></details>
-      <details class="faqItem reveal"><summary>Where can I connect?</summary><div class="faqAnswer">Use the Discord and OWNZ community links on this page. Make sure the invite is still active before sharing the site widely.</div></details>
-      <details class="faqItem reveal"><summary>Can the portfolio be updated?</summary><div class="faqAnswer">Yes. You can update tiers, add real clips, include server projects, and link your official social channels in the HTML file.</div></details>
+      <details class="faqItem reveal"><summary>Who is CALVORN?</summary><div class="faqAnswer">CALVORN is Nirob’s Minecraft PvP identity, focused on competitive gameplay, personal progress, and building a strong gaming community.</div></details>
+      <details class="faqItem reveal"><summary>Which PvP modes does CALVORN enjoy?</summary><div class="faqAnswer">Crystal PvP is the primary focus, with Sword PvP, Spear PvP, and UHC also featured in the profile.</div></details>
+      <details class="faqItem reveal"><summary>How can I connect with CALVORN?</summary><div class="faqAnswer">Visit the social links on this page to find CALVORN’s community profiles and get in touch.</div></details>
+      <details class="faqItem reveal"><summary>Is CALVORN open to collaborations?</summary><div class="faqAnswer">Gaming collaborations and community connections are welcome. Reach out through the available social links to discuss an idea.</div></details>
+      <details class="faqItem reveal"><summary>Where can I see updates?</summary><div class="faqAnswer">Check the linked social profiles for new projects, PvP progress, community activity, and future announcements.</div></details>
     </div>
   </div>
 </section>
@@ -614,19 +636,18 @@ body.secretOpen{overflow:hidden}
           <button class="btn secondary" type="button" id="copyUsername">Copy Minecraft Username</button>
         </div>
       </div>
-      <div class="pill"><b>PLAYER</b> · itz_calvorn</div>
+      <div class="pill"><b>PLAYER</b> · Itz_Calvorn1</div>
     </div>
   </div>
 </section>
 
 
-<section class="section" id="showcase"><div class="wrap">
-  <div class="sectionHead"><div><div class="eyebrow">THE ARENA</div><h2>Gameplay Showcase</h2><p class="lead">Your best fights belong here. Add your own YouTube links to turn these cards into real playable clips.</p></div><span class="pill">01 / SHOWCASE</span></div>
-  <div class="grid showcaseGrid">
-    <article class="card clipCard"><div class="clipArt crystalArt"><span>✦</span><b>CRYSTAL</b></div><h3>Crystal PvP</h3><p>Explosive combos, timing and pressure.</p><button class="btn secondary clipBtn" data-clip="Crystal PvP">Add / Watch Clip ↗</button></article>
-    <article class="card clipCard"><div class="clipArt swordArt"><span>⚔</span><b>SWORD</b></div><h3>Sword PvP</h3><p>Movement, aim and clean combos.</p><button class="btn secondary clipBtn" data-clip="Sword PvP">Add / Watch Clip ↗</button></article>
-    <article class="card clipCard"><div class="clipArt spearArt"><span>➶</span><b>SPEAR</b></div><h3>Spear PvP</h3><p>Reach, spacing and sharp decisions.</p><button class="btn secondary clipBtn" data-clip="Spear PvP">Add / Watch Clip ↗</button></article>
-  </div><p class="microNote">Clip buttons show instructions until you add your own video URL in the HTML.</p>
+<section class="section" id="commandcenter"><div class="wrap">
+  <div class="sectionHead"><div><div class="eyebrow">CALVORN SYSTEM // ONLINE</div><h2>Calvorn Status</h2><p class="lead">One identity. One mission. Keep grinding.</p></div><span class="pill">SYSTEM ONLINE</span></div>
+  <div class="card" style="padding:clamp(22px,4vw,38px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px">
+    <div><div class="smallLabel">CURRENT PLAYER</div><h3 style="font-size:clamp(24px,4vw,38px);margin:8px 0">Itz_Calvorn1</h3><p class="lead" style="margin:0">CALVORN // THE VOID WARRIOR</p></div>
+    <button class="btn secondary" id="copyIgnBtn" type="button">Copy Minecraft IGN ↗</button>
+  </div>
 </div></section>
 <section class="section" id="loadoutGallery"><div class="wrap">
   <div class="sectionHead"><div><div class="eyebrow">GEAR CHECK</div><h2>Signature Loadout</h2><p class="lead">A showcase for the gear, textures and cosmetics that define your style.</p></div></div>
@@ -649,6 +670,16 @@ body.secretOpen{overflow:hidden}
   <button class="btn primary" id="openSecret" type="button">Open Secret Terminal ↗</button>
 </div></section>
 
+
+<section class="section godMode" id="godmode"><div class="wrap">
+ <div class="sectionHead"><div><div class="eyebrow">LIMIT BREAK // 001</div><h2>CALVORN <span>GOD MODE</span></h2><p class="lead">Enter the arena. Rotate the player model. Unlock the hidden vault.</p></div><span class="pill">EXPERIMENTAL</span></div>
+ <div class="godGrid">
+  <article class="godCard skinCard"><div class="godLabel">PLAYER MODEL // DRAG TO ROTATE</div><button class="skinStage" id="skinStage" type="button" aria-label="Rotate Calvorn player model"><div class="skinModel" id="skinModel"><div class="skinHead"></div><div class="skinBody"></div><div class="skinArm left"></div><div class="skinArm right"></div><div class="skinLeg left"></div><div class="skinLeg right"></div></div><div class="skinShadow"></div><span class="rotateHint">↻ TAP TO ROTATE</span></button><h3>PLAYER_001 // CALVORN</h3><p>This is a stylized CSS preview, not your exact Minecraft skin. Add your skin image later for an exact look.</p></article>
+  <article class="godCard arenaCard"><div class="godLabel">CHOOSE YOUR ARENA</div><h3>SELECT COMBAT MODE</h3><div class="arenaChoices"><button data-arena="Crystal PvP" class="arenaChoice active">💎 <span>Crystal PvP</span></button><button data-arena="Sword PvP" class="arenaChoice">⚔️ <span>Sword PvP</span></button><button data-arena="Axe PvP" class="arenaChoice">🪓 <span>Axe PvP</span></button><button data-arena="Spear PvP" class="arenaChoice">🔱 <span>Spear PvP</span></button></div><div class="arenaResult" id="arenaResult" aria-live="polite"><span>ACTIVE DIMENSION</span><strong>CRYSTAL PVP</strong><p>Precision • Timing • Awareness</p></div><button class="btn primary" id="arenaLaunch" type="button">ENTER SELECTED ARENA ↗</button></article>
+  <article class="godCard vaultCard"><div class="godLabel">RESTRICTED ACCESS</div><div class="vaultSymbol">⌘</div><h3>THE CALVORN VAULT</h3><p>Enter the access phrase to reveal a secret message. Hint: the player tag.</p><form id="vaultForm" class="vaultForm"><input id="vaultInput" autocomplete="off" placeholder="ENTER ACCESS PHRASE" aria-label="Vault access phrase" maxlength="40"><button class="btn primary" type="submit">UNLOCK</button></form><div id="vaultOutput" class="vaultOutput" aria-live="polite">VAULT LOCKED</div></article>
+ </div>
+</div></section>
+
 </main>
 <button class="backTop" id="backTop" aria-label="Back to top">↑</button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -657,7 +688,7 @@ body.secretOpen{overflow:hidden}
   <div class="terminalWindow"><div class="terminalTop"><span class="terminalLights">● ● ●</span><b id="terminalTitle">CALVORN // ROOT TERMINAL</b><button id="closeSecret" aria-label="Close terminal">×</button></div>
   <div class="terminalBody"><div class="terminalLine">CALVORN OS [Version 0.1.001]</div><div class="terminalLine">Accessing PvP dimension...</div><div class="terminalLine terminalAccent">ACCESS GRANTED: PLAYER_001</div><p class="terminalBig">WELCOME, <span>CALVORN.</span></p><p>STATUS: ALWAYS GRINDING<br>MISSION: BECOME UNSTOPPABLE<br>WORLD: MINECRAFT PVP</p><div class="terminalCommands"><button data-command="help">help</button><button data-command="profile">profile</button><button data-command="clear">clear</button></div><div id="terminalOutput" aria-live="polite">Type a command above to explore.</div></div></div>
 </div>
-<div class="clipModal modalOverlay" id="clipModal" hidden role="dialog" aria-modal="true" aria-labelledby="clipTitle"><div class="clipWindow"><button id="closeClip" class="modalX" aria-label="Close">×</button><div class="eyebrow">GAMEPLAY SHOWCASE</div><h2 id="clipTitle">Add your clip</h2><p>To make this card play a video, edit its button in the HTML and set <code>data-url</code> to your YouTube video URL. This page does not invent or embed a video you haven't supplied.</p><button class="btn primary" id="clipOkay">Got it</button></div></div>
+
 
 <footer><div class="wrap footerInner"><div><strong>CALVORN</strong><div>Built around the player. Driven by PvP.</div></div><div>© <span id="year"></span> CALVORN · Nirob</div></div></footer>
 
@@ -692,17 +723,18 @@ const intro=document.getElementById('intro');
 const enterBtn=document.getElementById('enterBtn');
 const portalLoading=document.getElementById('portalLoading');
 const loadingText=document.getElementById('loadingText');
-enterBtn.addEventListener('click',()=>{
-  if(enterBtn.disabled)return;
-  enterBtn.disabled=true;
-  enterBtn.style.opacity='.7';
-  portalLoading.classList.add('active');
-  loadingText.textContent='OPENING DIMENSION...';
-  intro.classList.add('exiting');
-  document.body.classList.add('entered');
-  setTimeout(()=>{loadingText.textContent='WELCOME TO CALVORN WORLD';},420);
-  setTimeout(()=>intro.classList.add('hide'),1050);
-});
+function enterCalvornWorld(){
+  if(!intro) return;
+  intro.classList.add('hide');
+  intro.style.display='none';
+  intro.setAttribute('aria-hidden','true');
+  document.body.style.overflow='auto';
+  document.documentElement.style.overflow='auto';
+  window.scrollTo(0,0);
+}
+if(enterBtn) enterBtn.addEventListener('click',enterCalvornWorld);
+// Inline fallback for browsers/web previews that fail to attach listeners normally.
+// Keep the direct inline fallback for restrictive HTML previewers.
 // Lightweight cinematic particle field; no external libraries or assets required.
 (()=>{const canvas=document.getElementById('introCanvas'),ctx=canvas.getContext('2d');let w=0,h=0,particles=[],raf=0;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=canvas.clientWidth;h=canvas.clientHeight;canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);const count=Math.min(95,Math.floor(w*h/12500));particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.8+.35,v:Math.random()*.45+.08,a:Math.random()*.65+.15,phase:Math.random()*6.28}))}function draw(t){ctx.clearRect(0,0,w,h);for(const p of particles){if(!reduced){p.y-=p.v;p.x+=Math.sin(t*.0004+p.phase)*.18;if(p.y< -5){p.y=h+5;p.x=Math.random()*w}}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fillStyle=accent;ctx.globalAlpha=p.a;ctx.shadowBlur=10;ctx.shadowColor=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#ff3038';ctx.fill()}ctx.shadowBlur=0;ctx.globalAlpha=1;if(!reduced)raf=requestAnimationFrame(draw)}resize();draw(0);window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw(0)},{passive:true})})();
 const glow=document.getElementById('cursorGlow');window.addEventListener('pointermove',e=>{if(glow&&e.pointerType!=='touch'){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'}},{passive:true});
@@ -727,10 +759,10 @@ const copyUsername=document.getElementById('copyUsername');
 if(copyUsername){
   copyUsername.addEventListener('click',async()=>{
     try{
-      await navigator.clipboard.writeText('itz_calvorn');
+      await navigator.clipboard.writeText('Itz_Calvorn1');
       showToast('Minecraft username copied!');
     }catch(error){
-      showToast('Username: itz_calvorn');
+      showToast('Username: Itz_Calvorn1');
     }
   });
 }
@@ -789,22 +821,33 @@ if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:
  document.querySelectorAll('[data-command]').forEach(b=>b.addEventListener('click',()=>{
   const cmd=b.dataset.command;
   if(!out)return;
-  out.textContent=cmd==='help'?'AVAILABLE: help / profile / clear':cmd==='profile'?'PLAYER: itz_calvorn | ALIAS: CALVORN | MODE: MINECRAFT PVP':'Terminal cleared. CALVORN OS ready.';
+  out.textContent=cmd==='help'?'AVAILABLE: help / profile / clear':cmd==='profile'?'PLAYER: Itz_Calvorn1 | ALIAS: CALVORN | MODE: MINECRAFT PVP':'Terminal cleared. CALVORN OS ready.';
  }));
- const clipModal=document.getElementById('clipModal'),clipTitle=document.getElementById('clipTitle');
- document.querySelectorAll('.clipBtn').forEach(b=>b.addEventListener('click',()=>{
-  const url=b.dataset.url;
-  if(url && /^https?:\/\//i.test(url)){window.open(url,'_blank','noopener,noreferrer');return;}
-  if(clipTitle)clipTitle.textContent=b.dataset.clip||'Add your clip';
-  if(clipModal)clipModal.hidden=false;
- }));
- function closeClip(){if(clipModal)clipModal.hidden=true}
- document.getElementById('closeClip')?.addEventListener('click',closeClip);
- document.getElementById('clipOkay')?.addEventListener('click',closeClip);
- clipModal?.addEventListener('click',e=>{if(e.target===clipModal)closeClip()});
+ document.getElementById('copyIgnBtn')?.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText('Itz_Calvorn1');showToast('Minecraft IGN copied: Itz_Calvorn1');}
+  catch(e){showToast('Your IGN: Itz_Calvorn1');}
+ });
+ document.getElementById('titleBtn')?.addEventListener('click',()=>{
+  const reveal=document.getElementById('titleReveal');if(reveal){reveal.hidden=!reveal.hidden;showToast(reveal.hidden?'Title hidden':'TITLE UNLOCKED');}
+ });
  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeClip()}});
+})();
+
+
+// GOD MODE interactions: skin rotation, arena selection and local secret vault.
+(()=>{
+ const stage=document.getElementById('skinStage'),model=document.getElementById('skinModel');let rotation=-25;
+ stage?.addEventListener('click',()=>{rotation+=90;model.style.transform=`rotateY(${rotation}deg) rotateX(3deg)`;});
+ const result=document.getElementById('arenaResult');
+ document.querySelectorAll('[data-arena]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-arena]').forEach(b=>b.classList.toggle('active',b===button));
+  const name=button.dataset.arena;const descriptions={'Crystal PvP':'Precision • Timing • Awareness','Sword PvP':'Combos • Spacing • Movement','Axe PvP':'Critical hits • Shield pressure','Spear PvP':'Range • Tracking • Control'};
+  result.querySelector('strong').textContent=name.toUpperCase();result.querySelector('p').textContent=descriptions[name]||'Train • Compete • Improve';
+ }));
+ document.getElementById('arenaLaunch')?.addEventListener('click',()=>{const name=result.querySelector('strong').textContent;showToast?.(`Selected arena: ${name}`);document.getElementById('showcase')?.scrollIntoView({behavior:'smooth'});});
+ document.getElementById('vaultForm')?.addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('vaultInput'),out=document.getElementById('vaultOutput');if(input.value.trim().toLowerCase()==='Itz_Calvorn1'||input.value.trim().toLowerCase()==='calvorn'){out.textContent='ACCESS GRANTED // PLAYER_001 — THE LEGEND BUILDS HIS OWN WORLD.';out.classList.add('unlocked');}else{out.textContent='ACCESS DENIED // UNKNOWN PHRASE';out.classList.remove('unlocked');}});
 })();
 
 </script>
 </body>
-                                  </html>
+      </html>
