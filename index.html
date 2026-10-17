@@ -114,6 +114,205 @@ footer strong{color:#eee;letter-spacing:2px}
 .intro p{color:#aaa;letter-spacing:3px;font-size:.75rem;text-transform:uppercase}
 @media(max-width:760px){.cursorGlow{display:none}.navinner{min-height:62px}.menu{display:block}.navlinks{display:none;position:absolute;top:62px;left:0;right:0;background:#090909;padding:18px 4%;border-bottom:1px solid #333;flex-direction:column;align-items:flex-start}.navlinks.open{display:flex}.hero{min-height:620px}.heroContent{padding:75px 0}.grid{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.profileVisual{min-height:230px}.statgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.section{padding:65px 0}.sectionHead{display:block}.banner{align-items:flex-start;flex-direction:column}.timelineItem{grid-template-columns:1fr;gap:5px}.socialCard{flex-wrap:wrap}.socialCard .btn{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}#introCanvas{display:none}}
+
+/* ===== ULTIMATE EXPANSION: extra visual polish and new sections ===== */
+:root{
+  --red-soft:#ff5960;
+  --panel-2:#151515;
+  --glass:rgba(18,18,18,.78);
+}
+body{overflow-x:hidden}
+section{scroll-margin-top:82px}
+::selection{background:var(--red);color:#fff}
+.navlinks a{position:relative;padding:8px 0}
+.navlinks a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:1px;
+  width:0;
+  height:2px;
+  background:var(--red);
+  transition:width .25s ease;
+}
+.navlinks a:hover:after{width:100%}
+.heroContent{animation:heroArrive .9s .1s both}
+@keyframes heroArrive{
+  from{opacity:0;transform:translateY(22px);filter:blur(5px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
+.hero h1 span{
+  background:linear-gradient(100deg,#ff3038 10%,#ff8a8f 45%,#ff3038 80%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  background-size:220% auto;
+  animation:redFlow 6s linear infinite;
+}
+@keyframes redFlow{to{background-position:220% center}}
+.sectionHead h2{position:relative}
+.sectionHead h2:after{
+  content:"";
+  display:block;
+  height:3px;
+  width:54px;
+  margin-top:14px;
+  background:var(--red);
+  box-shadow:0 0 16px #ff303855;
+}
+.card{isolation:isolate}
+.card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:0;
+  background:linear-gradient(125deg,#ff30380c,transparent 45%);
+  transition:opacity .3s ease;
+}
+.card:hover:after{opacity:1}
+.sectionAlt{background:linear-gradient(180deg,#0b0b0b,#0e0e0e 50%,#080808)}
+.featureGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.featureCard{
+  min-height:190px;
+  padding:24px;
+  border-radius:15px;
+  border:1px solid #292929;
+  background:linear-gradient(145deg,#151515,#0a0a0a);
+  position:relative;
+  overflow:hidden;
+  transition:transform .25s,border-color .25s;
+}
+.featureCard:hover{transform:translateY(-5px);border-color:#873038}
+.featureNumber{font-size:.72rem;letter-spacing:2px;color:var(--red);font-weight:950}
+.featureCard h3{margin:20px 0 7px;font-size:1.2rem}
+.featureCard p{margin:0;color:#aaa;font-size:.92rem}
+.loadoutGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.loadoutItem{
+  text-align:center;
+  border:1px solid #303030;
+  border-radius:14px;
+  padding:22px 12px;
+  background:radial-gradient(circle at 50% 0,#ff303815,transparent 55%),#101010;
+}
+.loadoutItem .loadoutIcon{font-size:2rem;display:block;margin-bottom:10px}
+.loadoutItem strong{display:block;font-size:.98rem}
+.loadoutItem span{display:block;color:#999;font-size:.8rem;margin-top:5px}
+.milestoneList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.milestone{
+  display:flex;
+  gap:14px;
+  padding:19px;
+  border:1px solid #2a2a2a;
+  border-radius:13px;
+  background:#101010;
+}
+.milestoneMark{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  border-radius:11px;
+  background:#2b0e11;
+  color:#ff5960;
+  font-weight:1000;
+}
+.milestone h3{margin:0 0 4px;font-size:1rem}
+.milestone p{margin:0;color:#999;font-size:.88rem}
+.faqList{display:grid;gap:10px;max-width:850px}
+.faqItem{border:1px solid #2b2b2b;border-radius:12px;background:#101010;overflow:hidden}
+.faqItem summary{
+  cursor:pointer;
+  padding:17px 19px;
+  font-weight:800;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.faqItem summary::-webkit-details-marker{display:none}
+.faqItem summary:after{content:"+";color:var(--red);font-size:1.35rem}
+.faqItem[open] summary:after{content:"−"}
+.faqAnswer{padding:0 19px 18px;color:#aaa;font-size:.92rem}
+.contactPanel{
+  padding:clamp(25px,5vw,48px);
+  border:1px solid #512126;
+  border-radius:20px;
+  background:radial-gradient(ellipse at 85% 20%,#ff303817,transparent 40%),linear-gradient(125deg,#1a090b,#101010 65%);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+}
+.contactPanel h2{font-size:clamp(1.8rem,5vw,3rem)}
+.contactPanel p{color:#aaa;max-width:570px}
+.copyChip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#171717;
+  color:#eee;
+  border:1px solid #363636;
+  padding:9px 12px;
+  border-radius:9px;
+  cursor:pointer;
+}
+.copyChip:hover{border-color:var(--red)}
+.backTop{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:30;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid #4b2528;
+  color:white;
+  background:#1a0b0d;
+  box-shadow:0 8px 30px #0008;
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity .2s,transform .2s;
+}
+.backTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  z-index:120;
+  transform:translate(-50%,15px);
+  opacity:0;
+  pointer-events:none;
+  background:#181818;
+  border:1px solid #4b2528;
+  color:white;
+  border-radius:10px;
+  padding:11px 16px;
+  box-shadow:0 10px 35px #0008;
+  transition:opacity .25s,transform .25s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){
+  .featureGrid{grid-template-columns:1fr}
+  .loadoutGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .milestoneList{grid-template-columns:1fr}
+  .contactPanel{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px){
+  .section{padding:62px 0}
+  .featureCard{min-height:0}
+  .loadoutItem{padding:18px 8px}
+  .milestone{padding:15px}
+  .backTop{right:12px;bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 <body>
@@ -194,7 +393,106 @@ footer strong{color:#eee;letter-spacing:2px}
 <section class="section"><div class="wrap">
   <div class="banner reveal"><div><div class="eyebrow">Your next fight starts here</div><h3>THIS IS ONLY THE BEGINNING.</h3><p>CALVORN is always evolving — more progress, more goals, more PvP.</p></div><a class="btn secondary" href="#home">Back to Top ↑</a></div>
 </div></section>
+
+<section class="section sectionAlt" id="philosophy">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">06 / Mindset</div>
+        <h2>THE CALVORN CODE.</h2>
+        <p class="lead">A competitive mindset is built one fight, one mistake, and one improvement at a time.</p>
+      </div>
+    </div>
+    <div class="featureGrid">
+      <article class="featureCard reveal">
+        <div class="featureNumber">PRINCIPLE / 01</div>
+        <h3>STAY CONSISTENT.</h3>
+        <p>Practice with a purpose. Small improvements repeated every day can become a real advantage.</p>
+      </article>
+      <article class="featureCard reveal">
+        <div class="featureNumber">PRINCIPLE / 02</div>
+        <h3>LEARN EVERY FIGHT.</h3>
+        <p>Review mistakes, understand timing, and focus on the next decision instead of the last loss.</p>
+      </article>
+      <article class="featureCard reveal">
+        <div class="featureNumber">PRINCIPLE / 03</div>
+        <h3>RESPECT THE SCENE.</h3>
+        <p>Play confidently, respect other players, and let your progress speak louder than your words.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section" id="loadout">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">07 / Combat toolkit</div>
+        <h2>BUILT FOR THE FIGHT.</h2>
+        <p class="lead">The Minecraft combat styles that shape this portfolio. This is a style showcase, not a claim about a specific inventory.</p>
+      </div>
+    </div>
+    <div class="loadoutGrid reveal">
+      <div class="loadoutItem"><span class="loadoutIcon">💎</span><strong>Crystal</strong><span>Timing & placement</span></div>
+      <div class="loadoutItem"><span class="loadoutIcon">🗡️</span><strong>Spear</strong><span>Range & spacing</span></div>
+      <div class="loadoutItem"><span class="loadoutIcon">⚔️</span><strong>UHC</strong><span>Trades & movement</span></div>
+      <div class="loadoutItem"><span class="loadoutIcon">🛡️</span><strong>Defense</strong><span>Awareness & recovery</span></div>
+    </div>
+  </div>
+</section>
+<section class="section sectionAlt" id="milestones">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">08 / Progress log</div>
+        <h2>THE NEXT CHAPTER.</h2>
+        <p class="lead">A living roadmap for future achievements. Update each card when a milestone is actually completed.</p>
+      </div>
+    </div>
+    <div class="milestoneList">
+      <article class="milestone reveal"><div class="milestoneMark">01</div><div><h3>Improve Crystal consistency</h3><p>Keep refining placement, movement, and fight awareness.</p></div></article>
+      <article class="milestone reveal"><div class="milestoneMark">02</div><div><h3>Build a PvP clip collection</h3><p>Add highlight videos and memorable fights when they are ready.</p></div></article>
+      <article class="milestone reveal"><div class="milestoneMark">03</div><div><h3>Update verified tiers</h3><p>Keep tier information current as new results are earned.</p></div></article>
+      <article class="milestone reveal"><div class="milestoneMark">04</div><div><h3>Grow the community</h3><p>Connect with players, teams, and creators in the PvP scene.</p></div></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div>
+        <div class="eyebrow">09 / Quick answers</div>
+        <h2>PLAYER FAQ.</h2>
+        <p class="lead">A few quick details for visitors exploring the CALVORN portfolio.</p>
+      </div>
+    </div>
+    <div class="faqList">
+      <details class="faqItem reveal"><summary>What is CALVORN?</summary><div class="faqAnswer">CALVORN is the personal Minecraft PvP identity and portfolio of Nirob, built to showcase combat focus, progress, and community links.</div></details>
+      <details class="faqItem reveal"><summary>What is the main PvP focus?</summary><div class="faqAnswer">Crystal PvP is listed as the main focus, with Spear PvP and UHC also included in the current profile.</div></details>
+      <details class="faqItem reveal"><summary>Where can I connect?</summary><div class="faqAnswer">Use the Discord and OWNZ community links on this page. Make sure the invite is still active before sharing the site widely.</div></details>
+      <details class="faqItem reveal"><summary>Can the portfolio be updated?</summary><div class="faqAnswer">Yes. You can update tiers, add real clips, include server projects, and link your official social channels in the HTML file.</div></details>
+    </div>
+  </div>
+</section>
+<section class="section sectionAlt" id="contact">
+  <div class="wrap">
+    <div class="contactPanel reveal">
+      <div>
+        <div class="eyebrow">10 / Make contact</div>
+        <h2>LET'S MAKE THE NEXT MOVE.</h2>
+        <p>For community connections, Minecraft PvP conversations, and future collaborations, find CALVORN through the links below.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://discord.gg/dUse85kMR" target="_blank" rel="noopener noreferrer">Join OWNZ Discord ↗</a>
+          <button class="btn secondary" type="button" id="copyUsername">Copy Minecraft Username</button>
+        </div>
+      </div>
+      <div class="pill"><b>PLAYER</b> · itz_calvorn</div>
+    </div>
+  </div>
+</section>
+
 </main>
+<button class="backTop" id="backTop" aria-label="Back to top">↑</button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <footer><div class="wrap footerInner"><div><strong>CALVORN</strong><div>Built around the player. Driven by PvP.</div></div><div>© <span id="year"></span> CALVORN · Nirob</div></div></footer>
 <script>
 const intro=document.getElementById('intro');
@@ -210,6 +508,36 @@ menuBtn.addEventListener('click',()=>navlinks.classList.toggle('open'));
 navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Extra interactions: copy profile name, back-to-top, and accessible toast.
+const toast=document.getElementById('toast');
+let toastTimer;
+function showToast(message){
+  if(!toast)return;
+  toast.textContent=message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+}
+const copyUsername=document.getElementById('copyUsername');
+if(copyUsername){
+  copyUsername.addEventListener('click',async()=>{
+    try{
+      await navigator.clipboard.writeText('itz_calvorn');
+      showToast('Minecraft username copied!');
+    }catch(error){
+      showToast('Username: itz_calvorn');
+    }
+  });
+}
+const backTop=document.getElementById('backTop');
+function updateBackTop(){
+  if(backTop)backTop.classList.toggle('show',window.scrollY>520);
+}
+window.addEventListener('scroll',updateBackTop,{passive:true});
+updateBackTop();
+if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
 </script>
 </body>
-                                                                                                                                                                                                                                 </html>
+                           </html>
