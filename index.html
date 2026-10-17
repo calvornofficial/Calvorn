@@ -450,6 +450,22 @@ body.secretOpen{overflow:hidden}
 @media(max-width:850px){.godGrid{grid-template-columns:1fr 1fr}.vaultCard{grid-column:1/-1}}
 @media(max-width:560px){.godGrid{grid-template-columns:1fr}.vaultCard{grid-column:auto}.godCard{padding:18px}}
 
+
+/* Explore My World: cinematic launch feedback */
+.portalEnter{min-width:245px;justify-content:center;gap:12px;position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,letter-spacing .25s ease}
+.portalEnter:before{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,#ffffff40,transparent);transition:transform .65s ease}
+.portalEnter:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 0 35px color-mix(in srgb,var(--accent) 40%,transparent);letter-spacing:.04em}
+.portalEnter:hover:before{transform:translateX(120%) skewX(-18deg)}
+.portalEnter:disabled{opacity:1;cursor:wait}
+.launchSpinner{width:15px;height:15px;border:2px solid #ffffff70;border-top-color:#fff;border-radius:50%;animation:worldSpin .65s linear infinite;display:inline-block}
+@keyframes worldSpin{to{transform:rotate(360deg)}}
+.portalLaunching .portalScene{animation:portalLaunch 1.15s cubic-bezier(.65,0,.35,1) forwards}
+.portalLaunching .netherPortal{filter:brightness(1.8);transform:scale(1.08);transition:filter .5s,transform .5s}
+.portalLaunching .portalEnergy{animation:portalPulse .35s ease-in-out infinite alternate}
+@keyframes portalPulse{to{transform:scale(1.12);filter:brightness(2.2)}}
+@keyframes portalLaunch{0%{opacity:1;transform:scale(1)}45%{opacity:1;transform:scale(1.035)}100%{opacity:0;transform:scale(1.12);filter:blur(5px)}}
+@media(prefers-reduced-motion:reduce){.portalLaunching .portalScene{animation-duration:.25s}.launchSpinner{animation-duration:1.5s}}
+
 </style>
 </head>
 <body>
@@ -466,7 +482,7 @@ body.secretOpen{overflow:hidden}
     </div>
     <div class="portalTitle">CAL<span>VORN</span> WORLD</div>
     <p class="portalSub">A NEW WORLD IS WAITING BEYOND THE PORTAL</p>
-    <button type="button" class="btn primary portalEnter" id="enterBtn" onclick="document.getElementById(\'intro\').style.display=\'none\';document.getElementById(\'intro\').classList.add(\'hide\');document.body.style.overflow=\'auto\';document.documentElement.style.overflow=\'auto\';return false;"><span class="portalBtnIcon">✦</span> ENTER CALVORN WORLD <span>↗</span></button>
+    <button type="button" class="btn primary portalEnter" id="enterBtn"><span class="portalBtnIcon">✦</span> EXPLORE MY WORLD <span>↗</span></button>
     <div class="portalLoading" id="portalLoading" aria-live="polite"><span class="loadingBar"><i></i></span><span id="loadingText">OPENING DIMENSION...</span></div>
     <div class="portalFoot">MINECRAFT PVP PORTFOLIO <span>•</span> PLAYER 001</div>
   </div>
@@ -724,13 +740,24 @@ const enterBtn=document.getElementById('enterBtn');
 const portalLoading=document.getElementById('portalLoading');
 const loadingText=document.getElementById('loadingText');
 function enterCalvornWorld(){
-  if(!intro) return;
-  intro.classList.add('hide');
-  intro.style.display='none';
-  intro.setAttribute('aria-hidden','true');
-  document.body.style.overflow='auto';
-  document.documentElement.style.overflow='auto';
-  window.scrollTo(0,0);
+  if(!intro || intro.dataset.entering==='true') return;
+  intro.dataset.entering='true';
+  if(enterBtn){
+    enterBtn.disabled=true;
+    enterBtn.classList.add('worldLaunch');
+    enterBtn.innerHTML='<span class="portalBtnIcon">✦</span> OPENING YOUR WORLD <span class="launchSpinner" aria-hidden="true"></span>';
+  }
+  if(portalLoading){ portalLoading.classList.add('active'); portalLoading.style.opacity='1'; portalLoading.style.visibility='visible'; }
+  if(loadingText) loadingText.textContent='PORTAL ACTIVATED // ENTERING CALVORN WORLD...';
+  intro.classList.add('portalLaunching');
+  window.setTimeout(()=>{
+    intro.classList.add('hide');
+    intro.setAttribute('aria-hidden','true');
+    document.body.style.overflow='auto';
+    document.documentElement.style.overflow='auto';
+    intro.style.pointerEvents='none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  },1150);
 }
 if(enterBtn) enterBtn.addEventListener('click',enterCalvornWorld);
 // Inline fallback for browsers/web previews that fail to attach listeners normally.
