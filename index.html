@@ -467,25 +467,131 @@ body.secretOpen{overflow:hidden}
 @keyframes portalLaunch{0%{opacity:1;transform:scale(1)}45%{opacity:1;transform:scale(1.035)}100%{opacity:0;transform:scale(1.12);filter:blur(5px)}}
 @media(prefers-reduced-motion:reduce){.portalLaunching .portalScene{animation-duration:.25s}.launchSpinner{animation-duration:1.5s}}
 
+
+/* CALVORNFEARLESS boot sequence: lightweight red loader, then portal */
+.calvornBoot{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 46%,#25060b 0%,#100407 48%,#030303 100%);color:#fff;transition:opacity .55s ease,visibility .55s ease}
+.calvornBoot:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ff17300b 50%,transparent 75%),radial-gradient(ellipse at bottom,#a4001c24,transparent 55%)}
+.calvornBoot:after{content:"";position:absolute;inset:14px;border:1px solid #ff26332c;box-shadow:inset 0 0 65px #ff10200a;pointer-events:none}
+.calvornBoot.done{opacity:0;visibility:hidden;pointer-events:none}
+.bootContent{position:relative;z-index:2;width:min(90vw,560px);text-align:center;padding:24px 12px;animation:bootReveal .8s ease both}
+.bootSigil{width:92px;height:92px;margin:0 auto 24px;border:2px solid #ff3345;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:1000;font-size:2rem;letter-spacing:-.12em;background:radial-gradient(circle,#421018,#080507 68%);box-shadow:0 0 0 8px #ff24300b,0 0 40px #ff1b36a8,inset 0 0 25px #ff233b38;text-shadow:0 0 18px #ff2538;animation:sigilPulse 2s ease-in-out infinite}
+.bootBrand{font-weight:1000;font-size:clamp(2rem,9vw,4.5rem);letter-spacing:.045em;line-height:1.1;text-shadow:0 0 24px #ff25385c}
+.bootBrand span{display:block;color:#ff3b4b;font-size:.38em;letter-spacing:.42em;margin-top:12px}
+.bootRoles{font-size:clamp(.52rem,2.2vw,.72rem);letter-spacing:.15em;color:#c8aeb1;margin:20px 0 54px}.bootRoles i{color:#ff3549;padding:0 8px;font-style:normal}
+.bootLabel{color:#ff3c50;font-size:.75rem;letter-spacing:.48em;margin-bottom:14px}
+.bootTrack{height:10px;border:1px solid #a62b3a;border-radius:99px;padding:2px;overflow:hidden;box-shadow:0 0 15px #ff1f3327,inset 0 0 8px #000;background:#16080b}
+.bootTrack i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#a90020,#ff263e,#ff9ca5);box-shadow:0 0 15px #ff3046;transition:width .04s linear}
+.bootPercent{font-size:clamp(2rem,7vw,2.6rem);font-weight:1000;color:#ff4054;letter-spacing:.1em;margin-top:16px;font-variant-numeric:tabular-nums}
+.bootStatus{font-size:.63rem;letter-spacing:.32em;color:#8f8588;margin-top:14px}
+.bootEmbers{position:absolute;inset:0;opacity:.45;pointer-events:none;background-image:radial-gradient(circle at 12% 25%,#ff2b3b 0 1px,transparent 2px),radial-gradient(circle at 83% 32%,#ff2b3b 0 1px,transparent 2px),radial-gradient(circle at 25% 79%,#ff2b3b 0 1.5px,transparent 2.5px),radial-gradient(circle at 75% 72%,#ff2b3b 0 1px,transparent 2px);animation:emberDrift 4s ease-in-out infinite alternate}
+.intro{z-index:9999}
+.intro.portalLaunching .portalScene{animation:portalLaunch 3s cubic-bezier(.18,.7,.12,1) forwards!important}
+.intro.portalLaunching .netherPortal{animation:portalZoomDeep 3s cubic-bezier(.18,.7,.12,1) forwards!important}
+.intro.portalLaunching .portalEnergy{animation:portalPulse .22s ease-in-out infinite alternate!important}
+.intro.portalLaunching .portalInner{box-shadow:inset 0 0 65px var(--accent),0 0 50px var(--accent)}
+@keyframes bootReveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sigilPulse{0%,100%{box-shadow:0 0 0 8px #ff24300b,0 0 30px #ff1b3677,inset 0 0 20px #ff233b30}50%{box-shadow:0 0 0 13px #ff24300b,0 0 48px #ff1b36c9,inset 0 0 32px #ff233b66}}
+@keyframes emberDrift{from{transform:translateY(0);opacity:.25}to{transform:translateY(-12px);opacity:.6}}
+@keyframes portalZoomDeep{0%{transform:scale(1);filter:brightness(1)}35%{transform:scale(1.15) rotate(-1deg);filter:brightness(1.8)}70%{transform:scale(2.1) rotate(2deg);filter:brightness(2.5) saturate(1.5)}100%{transform:scale(5.5) rotate(5deg);filter:brightness(3.5) saturate(1.7);opacity:0}}
+@media(max-width:520px){.bootRoles{letter-spacing:.08em;margin-bottom:42px}.bootRoles i{padding:0 3px}.bootSigil{width:78px;height:78px}.bootStatus{letter-spacing:.2em}}
+@media(prefers-reduced-motion:reduce){.bootSigil,.bootEmbers{animation:none}.intro.portalLaunching .portalScene,.intro.portalLaunching .netherPortal{animation-duration:1s!important}}
+
+
+
+/* CINEMATIC LOADING BACKGROUND — animated crimson voxel fortress, not a static image */
+.calvornBoot{isolation:isolate;background:#030204;}
+.bootWorld{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 44%,#3b0610 0%,#170309 38%,#050306 76%);}
+.bootWorld:before{content:"";position:absolute;inset:-12%;background:repeating-linear-gradient(112deg,transparent 0 7%,#ff263408 7.2% 7.5%,transparent 7.8% 15%),radial-gradient(ellipse at 50% 100%,#b9002529,transparent 45%);animation:bootSkyDrift 12s linear infinite alternate;}
+.bootEclipse{position:absolute;width:min(43vw,310px);aspect-ratio:1;left:50%;top:25%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 42% 35%,#ff1d3524 0 22%,#130307 58%,#030204 67%);border:2px solid #ff273b99;box-shadow:0 0 18px #ff1c3655,0 0 85px #e900252b,inset 0 0 45px #ff17322b;animation:eclipsePulse 3.8s ease-in-out infinite;}
+.bootEclipse:after{content:"";position:absolute;inset:-14px;border:1px solid #ff26374a;border-radius:50%;box-shadow:0 0 25px #ff183333;animation:eclipseSpin 18s linear infinite;}
+.bootRuins{position:absolute;left:-3%;right:-3%;bottom:10%;height:44%;background-color:transparent;background-image:linear-gradient(to top,#050306 0 28%,transparent 28%),linear-gradient(90deg,transparent 0 2%,#080509 2% 4%,transparent 4% 7%,#0a060a 7% 10%,transparent 10% 13%,#09050a 13% 17%,transparent 17% 23%,#0a050a 23% 27%,transparent 27% 32%,#08050a 32% 35%,transparent 35% 39%,#0b050b 39% 43%,transparent 43% 49%,#08050a 49% 53%,transparent 53% 57%,#0a050a 57% 61%,transparent 61% 68%,#09050a 68% 72%,transparent 72% 77%,#0a050a 77% 81%,transparent 81% 86%,#08050a 86% 90%,transparent 90% 94%,#09050a 94% 98%,transparent 98%);clip-path:polygon(0 58%,4% 58%,4% 38%,7% 38%,7% 49%,11% 49%,11% 20%,14% 20%,14% 0,17% 0,17% 43%,22% 43%,22% 30%,25% 30%,25% 53%,30% 53%,30% 16%,34% 16%,34% 46%,39% 46%,39% 28%,42% 28%,42% 52%,48% 52%,48% 8%,52% 8%,52% 40%,57% 40%,57% 22%,61% 22%,61% 49%,66% 49%,66% 12%,70% 12%,70% 43%,76% 43%,76% 26%,80% 26%,80% 50%,85% 50%,85% 4%,89% 4%,89% 38%,94% 38%,94% 25%,97% 25%,97% 56%,100% 56%,100% 100%,0 100%);}
+.bootRuinsBack{opacity:.52;filter:drop-shadow(0 0 12px #b90025);transform:translateX(0);background-image:linear-gradient(90deg,transparent 0 3%,#18060b 3% 6%,transparent 6% 10%,#1b060c 10% 15%,transparent 15% 22%,#18060b 22% 27%,transparent 27% 34%,#1b060c 34% 40%,transparent 40% 48%,#18060b 48% 54%,transparent 54% 61%,#1b060c 61% 66%,transparent 66% 73%,#18060b 73% 79%,transparent 79% 86%,#1b060c 86% 92%,transparent 92%);animation:ruinParallax 18s ease-in-out infinite alternate;}
+.bootRuinsFront{bottom:4%;height:32%;opacity:.92;filter:drop-shadow(0 -4px 12px #ff142a38);transform:scaleX(1.08);}
+.bootRuinsFront:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 20px,#ff29351c 21px 23px),repeating-linear-gradient(90deg,transparent 0 31px,#ff293510 32px 34px);mask-image:linear-gradient(to top,#000,transparent 90%);}
+.bootFloor{position:absolute;left:-15%;right:-15%;bottom:-10%;height:37%;background:repeating-linear-gradient(175deg,transparent 0 17px,#ff1c3320 18px 20px,transparent 21px 39px),repeating-linear-gradient(90deg,transparent 0 54px,#ff1c3316 55px 57px),linear-gradient(to top,#21040b,#090408 68%,transparent);transform:perspective(260px) rotateX(38deg);transform-origin:bottom;opacity:.85;animation:floorPulse 3s ease-in-out infinite alternate;}
+.bootLightning{position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 17%,#ff173300 17.3%,#ff273b55 17.5%,transparent 18%),linear-gradient(72deg,transparent 0 79%,#ff263800 79.3%,#ff26384d 79.5%,transparent 80%);opacity:.5;animation:lightningFlash 6s steps(1,end) infinite;}
+.bootContent{z-index:3;text-shadow:0 2px 18px #000,0 0 30px #050204;}
+.bootEmbers{z-index:2;opacity:.75;background-image:radial-gradient(circle at 12% 25%,#ff2b3b 0 1px,transparent 2px),radial-gradient(circle at 83% 32%,#ff2b3b 0 1.5px,transparent 2.5px),radial-gradient(circle at 25% 79%,#ff2b3b 0 1.5px,transparent 2.5px),radial-gradient(circle at 75% 72%,#ff2b3b 0 1px,transparent 2px),radial-gradient(circle at 44% 15%,#ff7c6b 0 1px,transparent 2px),radial-gradient(circle at 62% 84%,#ff2438 0 2px,transparent 3px);background-size:100% 100%;animation:emberDrift 3s ease-in-out infinite alternate,emberBlink 2.4s linear infinite;}
+@keyframes bootSkyDrift{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1.5%,-1%,0) scale(1.04)}}
+@keyframes eclipsePulse{0%,100%{filter:brightness(.8);box-shadow:0 0 18px #ff1c3655,0 0 85px #e900252b}50%{filter:brightness(1.35);box-shadow:0 0 32px #ff1c3699,0 0 120px #e9002548}}
+@keyframes eclipseSpin{to{transform:rotate(360deg)}}
+@keyframes ruinParallax{from{transform:translateX(-1.2%)}to{transform:translateX(1.2%)}}
+@keyframes floorPulse{from{opacity:.55;filter:brightness(.8)}to{opacity:.95;filter:brightness(1.3)}}
+@keyframes lightningFlash{0%,9%,10%,47%,49%,100%{opacity:.16}9.5%,48%{opacity:.72}}
+@keyframes emberBlink{0%,100%{filter:brightness(.7)}50%{filter:brightness(1.5)}}
+@media(max-width:520px){.bootEclipse{width:min(58vw,245px);top:22%}.bootRuins{bottom:9%;height:35%}.bootRuinsFront{height:26%}.bootFloor{height:25%}.bootContent{width:min(94vw,560px)}}
+@media(prefers-reduced-motion:reduce){.bootEclipse,.bootEclipse:after,.bootWorld:before,.bootRuinsBack,.bootFloor,.bootLightning,.bootEmbers{animation:none!important}}
+
+/* CALVORNFEARLESS ULTRA PORTAL PASS — layered vortex, camera approach, particles */
+.calvornBoot .bootContent{transform-origin:center;}
+.calvornBoot.done .bootContent{animation:bootExitToPortal .55s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes bootExitToPortal{to{opacity:0;transform:scale(1.12);filter:blur(7px)}}
+.intro.portalApproach .portalScene{animation:portalArrivalCinematic 1.65s cubic-bezier(.16,1,.3,1) both}
+.intro.portalApproach .netherPortal{animation:portalFrameArrival 1.65s cubic-bezier(.16,1,.3,1) both,portalFloat 4s 1.65s ease-in-out infinite}
+.intro.portalApproach .portalCaption{animation:captionGlitch .7s .25s both}
+.intro.portalApproach .portalTitle,.intro.portalApproach .portalSub,.intro.portalApproach .portalEnter,.intro.portalApproach .portalFoot{animation:portalTextArrival .8s .48s both}
+@keyframes portalArrivalCinematic{0%{opacity:.2;transform:scale(1.18);filter:blur(9px)}45%{opacity:1;filter:blur(0)}100%{opacity:1;transform:scale(1)}}
+@keyframes portalFrameArrival{0%{transform:scale(.55) translateY(36px);filter:brightness(2.5) blur(4px);opacity:.2}55%{transform:scale(1.06) translateY(-4px);filter:brightness(1.7) blur(0);opacity:1}100%{transform:scale(1);filter:brightness(1);opacity:1}}
+@keyframes portalTextArrival{from{opacity:0;transform:translateY(15px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes captionGlitch{0%{opacity:0;letter-spacing:.8em;filter:blur(5px)}55%{opacity:1;text-shadow:3px 0 var(--accent),-3px 0 #8a42ff}100%{opacity:1;letter-spacing:.34em;text-shadow:0 0 14px var(--accent)}}
+.portalOuter:before{content:"";position:absolute;inset:-10px;border:1px solid color-mix(in srgb,var(--accent) 70%,white);border-radius:10px;opacity:.5;box-shadow:0 0 18px var(--accent),inset 0 0 18px var(--accent);animation:portalRuneRing 4s linear infinite;pointer-events:none}
+.portalOuter:after{content:"";position:absolute;inset:5px;border:2px dashed #c9a5ff66;border-radius:4px;animation:portalRuneRing 18s linear infinite reverse;pointer-events:none}
+.portalInner{isolation:isolate}
+.portalInner:before{content:"";position:absolute;z-index:1;inset:-20%;background:repeating-conic-gradient(from 0deg at 50% 50%,#fff0 0deg 12deg,color-mix(in srgb,var(--accent) 35%,transparent) 13deg 16deg,#fff0 17deg 28deg);mix-blend-mode:screen;opacity:.42;animation:vortexSpin 11s linear infinite}
+.portalEnergy{transform-origin:center;}
+.portalRunes{mix-blend-mode:screen;animation:runeFlicker 3.3s ease-in-out infinite}
+.portalBase:after{content:"";position:absolute;left:10%;right:10%;bottom:-12px;height:12px;background:radial-gradient(ellipse,var(--accent),transparent 72%);filter:blur(7px);opacity:.8}
+.portalParticles i{width:4px;height:4px}
+.portalParticles i:nth-child(odd){animation-duration:1.8s}
+.portalParticles i:nth-child(even){animation-duration:3.1s}
+.portalScene:before{content:"";position:absolute;z-index:-1;width:min(92vw,680px);height:min(92vw,680px);border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 38px,color-mix(in srgb,var(--accent) 10%,transparent) 39px 41px,transparent 42px 75px);opacity:.45;animation:approachRadar 15s linear infinite;pointer-events:none}
+.portalScene:after{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 0 46%,#0003 49%,transparent 53%),repeating-linear-gradient(0deg,transparent 0 5px,#fff04 6px 7px);opacity:.13;mix-blend-mode:screen}
+.intro.portalLaunching .portalOuter:before{animation-duration:.6s;opacity:1}
+.intro.portalLaunching .portalOuter:after{animation-duration:.4s;opacity:.9}
+.intro.portalLaunching .portalInner:before{animation-duration:.45s;opacity:1}
+.intro.portalLaunching .portalRunes{animation-duration:.35s;opacity:1}
+.intro.portalLaunching .portalParticles i{animation-duration:.45s!important}
+.intro.portalLaunching .portalCaption{animation:captionGlitch .18s infinite alternate}
+.intro.portalLaunching .portalSub{opacity:0}
+@keyframes portalRuneRing{to{transform:rotate(360deg)}}
+@keyframes vortexSpin{to{transform:rotate(360deg) scale(1.15)}}
+@keyframes runeFlicker{0%,100%{opacity:.45;filter:brightness(.8)}50%{opacity:.9;filter:brightness(1.8)}}
+@keyframes approachRadar{to{transform:rotate(360deg) scale(1.04)}}
+@media(max-width:520px){.portalScene:before{width:112vw;height:112vw}.portalOuter{border-width:10px}.portalInner:before{opacity:.28}.portalScene:after{opacity:.08}}
+@media(prefers-reduced-motion:reduce){.intro.portalApproach .portalScene,.intro.portalApproach .netherPortal,.portalOuter:before,.portalOuter:after,.portalInner:before,.portalScene:before{animation:none!important}}
+
 </style>
 </head>
 <body>
 <div class="noise" aria-hidden="true"></div>
 <div class="cursorGlow" id="cursorGlow" aria-hidden="true"></div>
+<div class="calvornBoot" id="calvornBoot" aria-label="Loading CALVORNFEARLESS" role="status">
+  <div class="bootWorld" aria-hidden="true"><div class="bootEclipse"></div><div class="bootRuins bootRuinsBack"></div><div class="bootRuins bootRuinsFront"></div><div class="bootFloor"></div><div class="bootLightning"></div></div>
+  <div class="bootEmbers" aria-hidden="true"></div>
+  <div class="bootContent">
+    <div class="bootSigil">CF</div>
+    <div class="bootBrand">CALVORN<span>FEARLESS</span></div>
+    <div class="bootRoles">PVP PLAYER <i>•</i> MONTAGE CREATOR <i>•</i> DEVELOPER</div>
+    <div class="bootLabel">LOADING</div>
+    <div class="bootTrack"><i id="bootProgress"></i></div>
+    <div class="bootPercent" id="bootPercent">0%</div>
+    <div class="bootStatus">PREPARING YOUR WORLD...</div>
+  </div>
+</div>
 <div class="intro" id="intro">
   <canvas id="introCanvas" aria-hidden="true"></canvas>
   <div class="portalScene">
-    <div class="portalCaption">DIMENSION GATE // CALVORN NETWORK</div>
+    <div class="portalCaption">CALVORNFEARLESS</div>
     <div class="netherPortal" aria-hidden="true">
       <div class="portalOuter"><div class="portalInner"><div class="portalEnergy"></div><div class="portalRunes">ᚲ　ᚨ　ᛚ　ᚡ　ᛟ　ᚱ　ᚾ</div></div></div>
       <div class="portalBase"></div>
       <div class="portalParticles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
-    <div class="portalTitle">CAL<span>VORN</span> WORLD</div>
-    <p class="portalSub">A NEW WORLD IS WAITING BEYOND THE PORTAL</p>
-    <button type="button" class="btn primary portalEnter" id="enterBtn"><span class="portalBtnIcon">✦</span> EXPLORE MY WORLD <span>↗</span></button>
+    <div class="portalTitle">CALVORN<span>FEARLESS</span></div>
+    <p class="portalSub">YOUR WORLD IS WAITING BEYOND THE PORTAL</p>
+    <button type="button" class="btn primary portalEnter" id="enterBtn"><span class="portalBtnIcon">✦</span> ENTER CALVORN WORLD <span>↗</span></button>
     <div class="portalLoading" id="portalLoading" aria-live="polite"><span class="loadingBar"><i></i></span><span id="loadingText">OPENING DIMENSION...</span></div>
-    <div class="portalFoot">MINECRAFT PVP PORTFOLIO <span>•</span> PLAYER 001</div>
+    <div class="portalFoot">CALVORNFEARLESS <span>•</span> MINECRAFT PVP PORTFOLIO <span>•</span> PLAYER 001</div>
   </div>
 </div>
 <header class="nav">
@@ -499,7 +605,7 @@ body.secretOpen{overflow:hidden}
 </header>
 <main>
 <section class="hero" id="home"><div class="wrap heroContent">
-  <div class="kicker">Independent Minecraft PvP Player ·</div>
+  <div class="kicker">Independent Minecraft PvP Player · Bangladesh</div>
   <h1>PLAY BOLD.<br><span>STAY CALVORN.</span></h1>
   <p>I'm Nirob — a Minecraft PvP player focused on improving mechanics, mastering different combat styles, and building my own place in the community.</p>
   <div class="actions"><a class="btn primary" href="#pvp">Explore My PvP ↓</a><a class="btn secondary" href="#socials">Connect With Me ↗</a></div>
@@ -740,25 +846,34 @@ const intro=document.getElementById('intro');
 const enterBtn=document.getElementById('enterBtn');
 const portalLoading=document.getElementById('portalLoading');
 const loadingText=document.getElementById('loadingText');
+const calvornBoot=document.getElementById('calvornBoot');
+const bootProgress=document.getElementById('bootProgress');
+const bootPercent=document.getElementById('bootPercent');
+// Start at 0%, complete at 100% in exactly about two seconds, then reveal the portal.
+(()=>{
+  const started=performance.now(),duration=2000;
+  function tick(now){
+    const progress=Math.min(100,Math.round(((now-started)/duration)*100));
+    if(bootProgress) bootProgress.style.width=progress+'%';
+    if(bootPercent) bootPercent.textContent=progress+'%';
+    if(progress<100){requestAnimationFrame(tick);}
+    else{window.setTimeout(()=>{if(calvornBoot)calvornBoot.classList.add('done');if(intro)intro.classList.add('portalApproach');document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';},180);}
+  }
+  if(calvornBoot) requestAnimationFrame(tick);
+  else {document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';}
+})();
 function enterCalvornWorld(){
   if(!intro || intro.dataset.entering==='true') return;
   intro.dataset.entering='true';
-  if(enterBtn){
-    enterBtn.disabled=true;
-    enterBtn.classList.add('worldLaunch');
-    enterBtn.innerHTML='<span class="portalBtnIcon">✦</span> OPENING YOUR WORLD <span class="launchSpinner" aria-hidden="true"></span>';
-  }
-  if(portalLoading){ portalLoading.classList.add('active'); portalLoading.style.opacity='1'; portalLoading.style.visibility='visible'; }
-  if(loadingText) loadingText.textContent='PORTAL ACTIVATED // ENTERING CALVORN WORLD...';
+  if(enterBtn){enterBtn.disabled=true;enterBtn.innerHTML='<span class="portalBtnIcon">✦</span> ENTERING CALVORN WORLD <span class="launchSpinner" aria-hidden="true"></span>';}
+  if(portalLoading){portalLoading.classList.add('active');portalLoading.style.opacity='1';portalLoading.style.visibility='visible';}
+  if(loadingText) loadingText.textContent='ENTERING CALVORNFEARLESS...';
   intro.classList.add('portalLaunching');
   window.setTimeout(()=>{
-    intro.classList.add('hide');
-    intro.setAttribute('aria-hidden','true');
-    document.body.style.overflow='auto';
-    document.documentElement.style.overflow='auto';
-    intro.style.pointerEvents='none';
-    window.scrollTo({top:0,behavior:'smooth'});
-  },1150);
+    intro.classList.add('hide');intro.setAttribute('aria-hidden','true');
+    document.body.style.overflow='auto';document.documentElement.style.overflow='auto';
+    intro.style.pointerEvents='none';window.scrollTo({top:0,behavior:'auto'});
+  },3000);
 }
 if(enterBtn) enterBtn.addEventListener('click',enterCalvornWorld);
 // Inline fallback for browsers/web previews that fail to attach listeners normally.
@@ -876,6 +991,23 @@ if(backTop)backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:
  document.getElementById('vaultForm')?.addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('vaultInput'),out=document.getElementById('vaultOutput');if(input.value.trim().toLowerCase()==='Itz_Calvorn1'||input.value.trim().toLowerCase()==='calvorn'){out.textContent='ACCESS GRANTED // PLAYER_001 — THE LEGEND BUILDS HIS OWN WORLD.';out.classList.add('unlocked');}else{out.textContent='ACCESS DENIED // UNKNOWN PHRASE';out.classList.remove('unlocked');}});
 })();
 
+
+// ULTRA PORTAL AMBIENCE: tiny CSS-driven motes; no external assets or libraries.
+(()=>{
+ const scene=document.querySelector('.portalScene');
+ if(!scene || scene.querySelector('.portalMoteField')) return;
+ const field=document.createElement('div');field.className='portalMoteField';field.setAttribute('aria-hidden','true');
+ field.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;';
+ for(let i=0;i<24;i++){
+  const mote=document.createElement('i');const left=(i*37+13)%100;const delay=(i%8)*-.47;const duration=4+(i%5)*1.2;
+  mote.style.cssText=`position:absolute;left:${left}%;bottom:${(i*19)%65}%;width:${i%4===0?3:2}px;height:${i%4===0?3:2}px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px var(--accent);opacity:.0;animation:portalMoteRise ${duration}s ${delay}s linear infinite;`;
+  field.appendChild(mote);
+ }
+ scene.prepend(field);
+ const style=document.createElement('style');style.textContent='@keyframes portalMoteRise{0%{transform:translate3d(0,22px,0) scale(.5);opacity:0}15%{opacity:.8}75%{opacity:.45}100%{transform:translate3d(14px,-72px,0) scale(1.4);opacity:0}}';document.head.appendChild(style);
+})();
+
 </script>
+<script>document.body.style.overflow="hidden";document.documentElement.style.overflow="hidden";</script>
 </body>
-        </html>
+      </html>
